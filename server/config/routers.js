@@ -14,18 +14,18 @@ let router = {
   },
   
   index: async (ctx, next) => {
+    console.log(ctx);
     await ctx.render('index',{});
   },
 
-  pdfreport: async (ctx, next) => {
-    console.log(__dirname);
-    try {   
-      var pdfreport = require("../service/dc/PdfReport.js");
-      console.log(pdfreport);
-      pdfreport.output(ctx);
-      ctx.redirect('/');
-      return;
+  //RESTfulな...
+  service: async (ctx, next) => {
+    try {
+      let url = ctx.req._parsedUrl;
+      ctx.body = { "share": { "comment_count": 0, "share_count":150 } };
+      await next;
     } catch (e) {
+      console.log(e);
       ctx.throw(e, 500);
     }
   }

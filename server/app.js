@@ -6,15 +6,16 @@ const koaRouter = require('koa-router');   // import standart koa-router
 const logger = require('koa-logger');
 const serve = require('koa-static');
 const views = require('koa-views');
-const routes = require('./config/routers');
 const riot = require('riot');
+
+const users = require('./config/users');
+const routes = require('./config/routers');
 
 let bridgedRouter = new bridgeRouter(koaRouter);   // patch the koa-router 
 
 let _ = new bridgedRouter();  
 
 const app = new koa();
-
 _.use(logger());
 
 _.use(async (ctx, next)=> {
@@ -24,7 +25,7 @@ _.use(async (ctx, next)=> {
 
 //動的なもの...
 _.use(views(__dirname+ "/published/", { extension: "html"}));
-_.use(views(__dirname+ "/service/", {}));
+_.use(views(__dirname+ "/service/", { extension: "js"}));
 
 _.use((ctx, next) => {
     return next().catch(err => {
@@ -36,10 +37,10 @@ _.use((ctx, next) => {
     })
 })
 
+//動的コンテンツの定義
 _.bridge(routes.init, (router) => {
-    _.get('/', routes.index);
-    _.get('/dc/pdfreport', routes.pdfreport);
-    _.get('/dc/pdfreport..', routes.pdfreport);
+   _.get('/', routes.index);
+   _.get('/service', routes.service);
 });
 
 //エラー処理

@@ -12,7 +12,7 @@
                 <a class="item" href="#">運営</a>
                 <a class="item" href="#">利用規約</a>
                 <a class="item" href="#">プライバシーポリシー</a>
-                <a class="item" href="#">お問い合わせ</a>
+                <a class="item" href="/#inquire">お問い合わせ</a>
                 <a href="#signin" class="item" >Sign In</a>or
                 <a href="#signup" class="item" >Sign Up</a>
             </div>

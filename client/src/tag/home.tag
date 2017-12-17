@@ -8,7 +8,7 @@
           </div>
         </h1>
         <div class="sub header">
-          .... F....... . SemanticUI example.
+          .... F....... . SemanticUI example.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         </div>
       </div>
     </div>
