@@ -1,0 +1,14 @@
+{
+    "paper":   {"w":210, "h":297},
+    "options": {"size": "A4"},
+    "layout":[
+        {"type": "box", "co":[10,10,95,18], "lw": 1, "stroke": "#ff0000"},
+        {"type": "text", "co":[12,12,93,16], "size": "10",
+            "value":"TOSHO CORPORATION 2-2,Marunouchi 3-chome,Chiyoda-ku Tokyo,100-0005 Japan",
+            "option": {
+                "align":"justify"
+           }   
+        },
+        {"type": "line", "co":[10,60,105,60], "lw": 1, "stroke": "#00ff00"}
+    ]
+}

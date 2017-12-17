@@ -1,0 +1,9 @@
+node_modules
+.git
+.vscode
+temp
+published/js
+published/index.html
+published/*ico
+published/assets
+*lock.json
