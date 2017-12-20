@@ -1,0 +1,48 @@
+{
+    "paper":   {"w":210, "h":297},
+    "options": {"size": "A4"},
+    "debug": true,
+    "layout":[
+        {"type": "text", "co":[12,12,93,16], "size": "10",
+            "value":"TOSHO CORPORATION 2-2,Marunouchi 3-chome,Chiyoda-ku Tokyo,100-0005 Japan",
+            "option": {
+                "align":"justify"
+           }   
+        },
+        {"type": "grid", "co":[10,60],
+            "colspacing": 0,
+            "cells" : [
+                {"type": "text", "co":[], "size": "10",
+                    "value":"TOSHO CORPORATION",
+                    "option": {
+                        "align":"justify"
+                   }   
+                },
+                {"type": "text", "co":[], "size": "10",
+                    "value":"2-2,Marunouchi",
+                    "option": {
+                        "align":"justify"
+                   }   
+                },
+                {"type": "text", "co":[], "size": "10",
+                    "value":"3-chome,Chiyoda-ku",
+                    "option": {
+                        "align":"justify"
+                   }   
+                },
+                {"type": "text", "co":[], "size": "10",
+                    "value":"Tokyo,100-0005",
+                    "option": {
+                        "align":"justify"
+                   }   
+                },
+                {"type": "text", "co":[], "size": "10",
+                    "value":"Japan",
+                    "option": {
+                        "align":"justify"
+                   }   
+                }
+            ]
+        }
+    ]
+}

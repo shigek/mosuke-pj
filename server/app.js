@@ -40,7 +40,8 @@ _.use((ctx, next) => {
 //動的コンテンツの定義
 _.bridge(routes.init, (router) => {
    _.get('/', routes.index);
-   _.get('/service', routes.service);
+   _.get('/service', routes.doGet);
+   _.put('/service', routes.doPut);
 });
 
 //エラー処理
