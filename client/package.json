@@ -11,7 +11,8 @@
     "jquery": "^3.2.1",
     "riot": "^3.7.4",
     "riot-route": "^3.1.2",
-    "semantic-ui-riot": "^0.1.1"
+    "semantic-ui-riot": "^0.1.1",
+    "semantic-ui-transition": "^2.2.12"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

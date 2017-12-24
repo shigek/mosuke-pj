@@ -6,27 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>App</title>
   <link rel="stylesheet" type="text/css" href="/semantic.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/transition.min.css"/>
+  <script type="text/javascript" src="/jquery.min.js"></script>
   <script type="text/javascript" src="/riot.min.js"></script>
   <script type="text/javascript" src="/semantic-ui-riot.min.js"></script>
-  <style type="text/css">
-    body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-      top: 200px;
-    }
-  </style>
-
+  <script type="text/javascript" src="/transition.min.js"></script>
+  <script>var obs = riot.observable();</script>
 
 </head>
 
 <body style="background-color:#DADADA">
-    <header></header>
+  <header></header>
+  <div>
+    <guidance></guidance>
     <content></content>
-    <!-- <footer></footer> -->
+  </div>
+  <!-- <footer></footer> -->
 </body>
 </html>

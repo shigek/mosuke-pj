@@ -51,11 +51,13 @@ _.use(ctx => {
     ctx.throw(err, 404);
  });
 
- // スタティックロード記述
- app.use(serve(__dirname + "/published/", {}));
- app.use(serve(__dirname + "/node_modules/riot/",{}));
- app.use(serve(__dirname + "/node_modules/semantic-ui-riot/dist/",{}));
- app.use(serve(__dirname + "/node_modules/semantic-ui-offline/",{}));
+// スタティックロード記述
+app.use(serve(__dirname + "/published/", {}));
+app.use(serve(__dirname + "/node_modules/riot/",{}));
+app.use(serve(__dirname + "/node_modules/semantic-ui-riot/dist/",{}));
+app.use(serve(__dirname + "/node_modules/semantic-ui-offline/",{}));
+app.use(serve(__dirname + "/node_modules/jquery/dist/",{}));
+app.use(serve(__dirname + "/node_modules/semantic-ui-transition/",{}));
  
 app.use(_.routes()).use(_.allowedMethods());
 

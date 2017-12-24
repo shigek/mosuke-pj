@@ -1,5 +1,5 @@
 <header>
-    <div class="ui grid">
+    <!--  <div class="ui grid">  -->
         <div class="ui fixed inverted borderless menu">
           <a href="#" class="header item">
             <h4>
@@ -8,6 +8,10 @@
             </h4>
           </a>
           <div class="right menu">
+            <div class="header item" if={user}>
+              <i class="icon user"></i>
+                { user.email }
+            </div>
             <div class="item">
                 <a class="item" href="#">運営</a>
                 <a class="item" href="#">利用規約</a>
@@ -18,5 +22,6 @@
             </div>
           </div>
         </div>
-    </div>
+    <!--  </div>  -->
 </header>
+
