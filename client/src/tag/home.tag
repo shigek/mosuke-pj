@@ -1,6 +1,6 @@
 <home>
   <div style="margin-top:70px;max-width:500px!important" class="ui fluid very padded basic container segment">
-    <div class="ui center aligned very padded basic segment">
+    <div id="home" class="ui center aligned very padded basic segment">
       <h1 class="ui icon header">
         <i class="qq teal icon"></i>
         <div class="content">
@@ -12,4 +12,9 @@
       </div>
     </div>
   </div>
+  <script>
+    this.on('mount', function() {
+      $('#home').transition('scale in');
+    });
+    </script>
 </home>

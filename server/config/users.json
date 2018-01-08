@@ -1,9 +1,12 @@
 {
     "_comment": "本来は、DBに登録登録されている値を使う",
     "users": [
-        {"name": "user01", "password": "pass0", "admin": true},
-        {"name": "user02", "password": "pass0", "admin": true},
-        {"name": "user03", "password": "pass0", "admin": true},
-        {"name": "user04", "password": "pass0", "admin": true}
+        {
+            "id": "user01", 
+            "password": "$2a$10$Yhd.ADzguxYsUUFhc62A4eY4YEhNXwSyn0si86fdyefcK36Hq25mG", 
+            "firstname":"taro",
+            "lastname":"yamada",
+            "admin": true
+        }
     ]
 }

@@ -3,7 +3,7 @@ var copyWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    "app" : './src/js/index.js'
+    "app": './src/js/index.js'
   },
   output: {
     path: __dirname + '/dist',
@@ -39,12 +39,13 @@ module.exports = {
     ]
   },
   resolve: {
-  //    modules: ["node_modules"],
+      modules: ["node_modules"],
       extensions: ['*', '.js', '.tag']
   },
   plugins: [
     new webpack.ProvidePlugin({
-      riot: 'riot'
+      riot: 'riot',
+      route: 'riot-route',
     }),
     new copyWebpackPlugin({
       filename: 'index.html',

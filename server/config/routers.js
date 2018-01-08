@@ -1,12 +1,15 @@
 "use strict";
 
+const utils = require('../common/sdk/utils');
+const jwt = require('../libs/jwt');
+
 let router = {
   init: async (ctx, next) => {
     let url = ctx.req._parsedUrl;
     let pathname = url.pathname;
     var checkExt = /.*[\.(xml|html|json)]$/;
     if (pathname.search(checkExt) < 0 && pathname.substr(-1) !== '/') {
-      ctx.redirect((pathname+'/')+(url.search||''));
+      ctx.redirect((pathname + '/') + (url.search || ''));
       return;
     }
     ctx.$$ = {};
@@ -14,37 +17,70 @@ let router = {
   },
   
   index: async (ctx, next) => {
-    console.log(ctx);
-    await ctx.render('index',{});
+    await ctx.render('index', {});
   },
 
-  //RESTfullな...doGet
+  //RESTfulな...doGet
   doGet: async (ctx, next) => {
     try {
-      let url = ctx.req._parsedUrl;
-      //?id=を解析して、jsを呼び出す。
-      // 何故か、pathが解決している　^^);
-      var value = 'Report';
-      var service = require('../service/api/' + value + ".js");
-      ctx.body = service.execute(url.query, ctx);
-      await next;
+      let api = utils.getApi(ctx);
+      let service = require(api.dir + "/" + api.id);
+      if (!api.authenticate) {
+        ctx.body = service(ctx, api.query);
+        await next;
+      } else {
+        let token = ctx.request.body.token || ctx.request.headers['x-access-token'];
+        if (!token) {
+          ctx.status = 403;
+          ctx.body = { "code": 9, "message": "No token provided." };
+        } else {
+          jwt.authenticate(token)
+            .then(decoded => {
+              console.log(decoded);
+              let service = require(api.dir + "/" + api.id);
+              ctx.body = service(ctx, api.query);
+            })
+            .catch(error => {
+              console.log(error);
+              ctx.status = 500;
+              ctx.body = { "code": 9, "message": "Invalid token." };
+            })
+        }
+      }
     } catch (e) {
-      console.log(e);
       ctx.body = { "code": 9, "message": e.message };
       await next;
     }
   },
 
-  //RESTfullな...doPut
-  doPut: async (ctx, next) => {
+  //RESTfulな...doPost
+  doPost: async (ctx, next) => {
     try {
-      let url = ctx.req._parsedUrl;
-      //?id=を解析して、jsを呼び出す。
-      // &key=valueは、 requestパラメータとして渡す
-      ctx.body = { "code": 0, "message":"", "share": { "comment_count": 0, "share_count": 150 } };
-      await next;
+      let api = utils.getApi(ctx);
+      let service = require(api.dir + "/" + api.id);
+      if (!api.authenticate) {
+        service(ctx, api.query, ctx.request.body);
+        await next;
+      } else {
+        let token = ctx.request.body.token || ctx.request.headers['x-access-token'];
+        if (!token) {
+          ctx.status = 403;
+          ctx.body = { "code": 9, "message": "No token provided." };
+        } else {
+          jwt.authenticate(token)
+            .then(decoded => {
+              console.log(decoded);
+              let service = require(api.dir + "/" + api.id);
+              service(ctx, api.query, ctx.request.body);
+            })
+            .catch(error => {
+              console.log(error);
+              ctx.status = 500;
+              ctx.body = { "code": 9, "message": "Invalid token." };
+            })
+        }
+      }
     } catch (e) {
-      console.log(e);
       ctx.body = { "code": 9, "message": e.message };
       await next;
     }

@@ -1,19 +1,20 @@
+"use strict";
+
 import route from 'riot-route';
-var $ = require('jquery')
-$.fn.transition = require('semantic-ui-transition');
 
 import "../tag/auth.tag";
 import "../tag/header.tag";
 import "../tag/home.tag";
-import "../tag/inquire";
+import "../tag/profile";
 import "../tag/guidance";
 import "../tag/dimmer.tag";
+import "../tag/menu.tag";
 
 //import "../tag/footer.tag";
 
-
 riot.mount('header', 'header');
 riot.mount('guidance', 'guidance');
+riot.mount('menu', 'menu');
 //riot.mount('footer', 'footer');
 
 route('/', function () {
@@ -28,8 +29,8 @@ route('/signup', function () {
     riot.mount('content', 'auth', { type: 'signup' });
 });
 
-route('/inquire', function () {
-    riot.mount('content', 'inquire', { method:"post", url:"/service/" });
+route('/profile', function () {
+    riot.mount('content', 'profile');
 });
 
 route.start(true);

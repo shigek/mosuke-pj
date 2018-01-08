@@ -1,0 +1,14 @@
+{
+    "apis": [
+        {
+            "id": "Report",
+            "dir": "../service/api",
+            "authenticate": true
+        },
+        {
+            "id": "Signin",
+            "dir": "../libs",
+            "authenticate": false
+        }
+    ]
+}

@@ -9,7 +9,7 @@ var utils = require("../../common/sdk/utils");
  * @param {*} request 
  * @param {*} response 
  */
-module.exports.execute = function (request, ctx) {
+module.exports = function (ctx, q, body) {
     var json = require("../etc/pdf/example.json");
     // console.log(co);
     // console.log(calc(210, 297, co));
