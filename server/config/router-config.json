@@ -9,6 +9,11 @@
             "id": "Signin",
             "dir": "../libs",
             "authenticate": false
+        },
+        {
+            "id": "Signup",
+            "dir": "../libs",
+            "authenticate": false
         }
     ]
 }

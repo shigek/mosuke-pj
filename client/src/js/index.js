@@ -22,11 +22,11 @@ route('/', function () {
 });
 
 route('/signin', function() {
-    riot.mount('content', 'auth', { type: 'signin' });
+    riot.mount('content', 'auth', { type: 'Signin' });
 });
 
 route('/signup', function () {
-    riot.mount('content', 'auth', { type: 'signup' });
+    riot.mount('content', 'auth', { type: 'Signup' });
 });
 
 route('/profile', function () {

@@ -26,7 +26,7 @@ let router = {
       let api = utils.getApi(ctx);
       let service = require(api.dir + "/" + api.id);
       if (!api.authenticate) {
-        ctx.body = service(ctx, api.query);
+        ctx.body = await service(ctx, api.query);
         await next;
       } else {
         let token = ctx.request.body.token || ctx.request.headers['x-access-token'];
@@ -59,7 +59,7 @@ let router = {
       let api = utils.getApi(ctx);
       let service = require(api.dir + "/" + api.id);
       if (!api.authenticate) {
-        service(ctx, api.query, ctx.request.body);
+        await service(ctx, api.query, ctx.request.body);
         await next;
       } else {
         let token = ctx.request.body.token || ctx.request.headers['x-access-token'];

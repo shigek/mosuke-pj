@@ -28,6 +28,12 @@
         route.default('/');
       })
 
+      obs.on("signuped", function(obj) {
+        that.user = obj
+        that.update()
+        route.default('/profile');
+      })
+
       sidebar() {
         obs.trigger('menuClicked', {})
       }

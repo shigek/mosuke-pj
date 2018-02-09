@@ -4,7 +4,7 @@
             <h2 class="ui teal image header">
             <!--  <img src="assets/images/logo.png" class="image">  -->
             <div class="content">
-                {opts.type=='signup' ? 'Sign Up' : 'Login to your account'}
+                {opts.type=='Signup' ? 'Sign Up' : 'Login to your account'}
             </div>
             </h2>
             <form name="auth-form" class={check=='on' ? "ui form large loading" : "ui form large"}>
@@ -21,16 +21,16 @@
                             <input ref="password" type="password" name="password" placeholder="Password">
                         </div>
                     </div>
-                    <div class="ui fluid large teal button" onclick={opts.type=='signup' ? signup : signin}>
+                    <div class="ui fluid large teal submit button">
                         {opts.type=='signup' ? 'Register' : 'Login'}
                     </div>
                     <div class="ui message">
-                        <p if={ opts.type=='signup' }>Already user? <a href="#signin">Sign In</a></p>
-                        <p if={ opts.type=='signin' }>New to us? <a href="#signup">Sign Up</a></p>
+                        <p if={ opts.type=='Signup' }>Already user? <a href="#signin">Sign In</a></p>
+                        <p if={ opts.type=='Signin' }>New to us? <a href="#signup">Sign Up</a></p>
                     </div>
                 </div>
                 <div if={ !error_message } class="ui error message"></div>
-                <div if={ error_message } class="ui visible error message">{ error_message }</div>
+                <div if={ error_message } class="ui visible error message small text">{ error_message }</div>
             </form>
 
         </div>
@@ -40,15 +40,15 @@
         that.check = ""
 
         //enterキーでsubmitを行わない指定
-        $(function() {
+        <!--  $(function() {
             $("input").keydown(function(e) {
                 if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
                     return false;
                 } else {
                     return true;
                 }
-            });
-        });
+            })
+        })  -->
 
         this.on('mount', function() {
             $('#auth').transition('scale in')
@@ -60,19 +60,19 @@
                 fields: {
                     user: 'empty',
                     password: 'empty'
+                },
+                onSuccess: function (event) {
+                    (opts.type=='Signup') ? signup() : signin()
+                    event.preventDefault()
                 }
-            });
-        });
-
-        signin(event) {
-            if (!$('.ui.form').form('is valid', 'user') ||
-                !$('.ui.form').form('is valid', 'password')) {
-                return false
-            }
-            event.preventDefault();
-            let content = {"user":this.refs.user.value, "password": this.refs.password.value}
+            })
+        })
+    </script>
+    <script>
+        function signin() {
+            let content = {"user":that.refs.user.value, "password": that.refs.password.value}
             that.check = "on";
-            fetch(/service/ + '?id=Signin', {
+            fetch(/service/ + '?id=' + opts.type, {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/JSON'
@@ -97,10 +97,36 @@
                 that.error_message= e.message
                 that.update()
             })
-            return false
         }
 
-        signup() {
+        function signup() {
+            let content = {"user":that.refs.user.value, "password": that.refs.password.value}
+            that.check = "on";
+            fetch(/service/ + '?id=' + opts.type, {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/JSON'
+                },
+                body: JSON.stringify(content) })
+            .then(data => data.json())
+            .then(json => {
+                if (json.code =='0') {
+                    if (('sessionStorage' in window) && (window.sessionStorage != null)){
+                        sessionStorage.setItem('token', json.value.token)
+                    }
+                    that.error_message = null
+                    obs.trigger("signuped", {"name":that.refs.user.value})
+                } else {
+                    that.error_message= json.message
+                }
+                that.check = ""
+                that.update()
+            })
+            .catch( e => {
+                that.check = ""
+                that.error_message= e.message
+                that.update()
+            })
         }
     </script>
 </auth>
