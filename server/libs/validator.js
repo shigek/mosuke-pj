@@ -37,7 +37,7 @@ function go() {
     let valid = new (require('jsonschema').Validator);
     let vresult = valid.validate(source.indata, salesContractSchema);
     if (vresult.errors.length > 0) {
-        result.status = "VALID";
+        result.status = "FATAL";
         result.errors = vresult.errors;
     } else {
         result.status = "SUCCESS";
