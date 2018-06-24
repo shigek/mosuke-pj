@@ -50,7 +50,8 @@ passport.use(new BasicStrategy((clientId, clientSecret, done) => {
 passport.use(new ClientPasswordStrategy((clientId, clientSecret, done) => {
   db.clients.findByClientId(clientId)
     .then(client => validate.client(client, clientSecret))
-    .then(client => done(null, client))
+    .then(client => { console.log("A"); done(null, client) })
+    .then(token => done(null, token))
     .catch(() => done(null, false));
 }));
 
@@ -94,4 +95,3 @@ passport.deserializeUser((id, done) => {
     .then(user => done(null, user))
     .catch(err => done(err));
 });
-exports.passport = passport;

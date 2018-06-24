@@ -20,7 +20,6 @@ const publicKey = fs.readFileSync(path.join(__dirname, '../../.certs/pubkey.pem'
  *                        minutes (3600 seconds) if nothing is passed in.
  * @param  {String} sub - The subject or identity of the token.
  * @return {String} The JWT Token
- * RS256で良いです。
  */
 exports.createToken = ({ exp = 3600, sub = '' } = {}) => {
   const token = jwt.sign({

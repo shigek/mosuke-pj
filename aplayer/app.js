@@ -6,12 +6,7 @@ const koaRouter = require('koa-router');   // import standart koa-router
 const logger = require('koa-logger');
 const passport = require('koa-passport');
 const session = require('koa-session');
-
-const client = require('./oauth-2/client');
-const config = require('./oauth-2/config');
-const db = require('./oauth-2/db');
-const token = require('./oauth-2/token');
-const user = require('./oauth-2/user');
+const exchange = require('./oauth-2/exchange');
 
 let _oauth2 = new koaRouter();
 
@@ -30,9 +25,13 @@ app
 	.use(_oauth2.allowedMethods())
 	.on("error", console.error);
 
-_oauth2.post('/oauth/token',
-		passport.authenticate('oauth2-client-password')
-);
+_oauth2.post('/oauth/token', (ctx) => {
+	return passport.authenticate(['basic', 'oauth2-client-password'], { session: false }, (err, client) => {
+		//クライアントの情報を使って、JWTトークンをつくっちゃいます。
+		return exchange.clientCredentials(ctx, client);
+
+	})(ctx)
+});
 
 app.listen(3000, () => {
 	console.log("open http://localhost:3000");
