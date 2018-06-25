@@ -2,17 +2,19 @@
 
 const koa = require('koa');
 const bodyParser = require('koa-bodyparser');
+const bridgeRouter = require('koa-router-bridge');   //-- import the module 
 const koaRouter = require('koa-router');   // import standart koa-router 
 const logger = require('koa-logger');
 const passport = require('koa-passport');
 const session = require('koa-session');
-const exchange = require('./oauth-2/exchange');
+const routes = require('./config/routers');
 
-let _oauth2 = new koaRouter();
+let bridgedRouter = new bridgeRouter(koaRouter);   // patch the koa-router 
+
+let _ = new bridgedRouter();
 
 const app = new koa();
-_oauth2.use(logger());
-
+_.use(logger());
 
 require('./oauth-2/auth');
 app.keys = ['secret']
@@ -21,16 +23,14 @@ app
 	.use(session({}, app))
 	.use(passport.initialize())
 	.use(passport.session())
-	.use(_oauth2.routes())
-	.use(_oauth2.allowedMethods())
+	.use(_.routes())
+	.use(_.allowedMethods())
 	.on("error", console.error);
 
-_oauth2.post('/oauth/token', (ctx) => {
-	return passport.authenticate(['basic', 'oauth2-client-password'], { session: false }, (err, client) => {
-		//クライアントの情報を使って、JWTトークンをつくっちゃいます。
-		return exchange.clientCredentials(ctx, client);
-
-	})(ctx)
+//動的コンテンツの定義
+_.bridge(routes.init, (router) => {
+	_.post('/oauth/token', routes.token);
+	_.get('/documents/:docId', routes.documents);
 });
 
 app.listen(3000, () => {

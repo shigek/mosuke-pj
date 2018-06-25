@@ -11,6 +11,7 @@ var OAuth2Error = require('./oauth2error');
 function TokenError(message, code, uri, status) {
   if (!status) {
     switch (code) {
+      case 'invalid_token': status = 400; break;
       case 'invalid_request': status = 400; break;
       case 'invalid_client': status = 401; break;
       case 'invalid_grant': status = 403; break;
@@ -19,19 +20,14 @@ function TokenError(message, code, uri, status) {
       case 'invalid_scope': status = 400; break;
     }
   }
-  
   OAuth2Error.call(this, message, code, uri, status);
   Error.captureStackTrace(this, arguments.callee);
   this.name = 'TokenError';
-}
 
+}
 /**
  * Inherit from `OAuth2Error`.
  */
 TokenError.prototype.__proto__ = OAuth2Error.prototype;
 
-
-/**
- * Expose `TokenError`.
- */
 module.exports = TokenError;

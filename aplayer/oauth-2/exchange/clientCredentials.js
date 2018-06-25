@@ -12,12 +12,24 @@ const db = require('../db');
 module.exports = (ctx, client) => {
   let req = ctx.request;
   let scope = req.body.scope;
-
+  let grant = req.body.grant_type;
+  
   if (scope) {
     if (typeof scope !== 'string') {
-      return next(new TokenError('Invalid parameter: scope must be a string', 'invalid_request'));
+      ctx.body = { error: 'invalid_request', error_description: 'Invalid parameter: scope must be a string' };
+      return;
     }
   }
+  if (grant) {
+    if (grant !== 'client_credentials') {
+      ctx.body = {error: 'invalid_grant', error_description: 'Invalid client credentials'}
+      return;
+    }
+  } else {
+    ctx.body = { error: 'invalid_request', error_description: 'Invalid parameter: grant_type is required' };
+    return;
+}
+
   const token = utils.createToken({ sub: client.id, exp: config.token.expiresIn });
   const expiration = config.token.calculateExpirationDate();
   //揮発性ストアにトークンを保持
@@ -26,8 +38,7 @@ module.exports = (ctx, client) => {
   var tok = {};
   tok.access_token = token;
   tok.token_type = tok.token_type || 'Bearer';
-  tok.expires_in = expiration;
-  var json = JSON.stringify(tok);
+  tok.expires_in = config.token.expiresIn;
   ctx.headers = {
     "Content-Type": "application/json",
     "Cache-Control": "no-store",

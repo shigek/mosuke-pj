@@ -4,6 +4,7 @@ const config  = require('./config');
 const db      = require('./db');
 const utils   = require('./utils');
 const process = require('process');
+const ValidateError = require('./errors/validateerror');
 
 /** Validate object to attach all functions to  */
 const validate = Object.create(null);
@@ -17,11 +18,11 @@ const suppressTrace = process.env.OAUTHRECIPES_SURPRESS_TRACE === 'true';
  * @throws  {Error}  The given message as an error
  * @returns {undefined}
  */
-validate.logAndThrow = (msg) => {
+validate.logAndThrow = (msg, code, uri, status) => {
   if (!suppressTrace) {
     console.trace(msg);
   }
-  throw new Error(msg);
+  throw new ValidateError(msg, code, uri, status);
 };
 
 /**
@@ -35,7 +36,7 @@ validate.logAndThrow = (msg) => {
 validate.user = (user, password) => {
   validate.userExists(user);
   if (user.password !== password) {
-    validate.logAndThrow('User password does not match');
+    validate.logAndThrow('User password does not match', 'Unauthorized', null, 401);
   }
   return user;
 };
@@ -48,7 +49,7 @@ validate.user = (user, password) => {
  */
 validate.userExists = (user) => {
   if (user == null) {
-    validate.logAndThrow('User does not exist');
+    validate.logAndThrow('User does not exist', 'Unauthorized', null, 401);
   }
   return user;
 };
@@ -64,7 +65,7 @@ validate.userExists = (user) => {
 validate.client = (client, clientSecret) => {
   validate.clientExists(client);
   if (client.clientSecret !== clientSecret) {
-    validate.logAndThrow('Client secret does not match');
+    validate.logAndThrow('Client secret does not match', 'Unauthorized', null, 401);
   }
   return client;
 };
@@ -77,7 +78,7 @@ validate.client = (client, clientSecret) => {
  */
 validate.clientExists = (client) => {
   if (client == null) {
-    validate.logAndThrow('Client does not exist');
+    validate.logAndThrow('Client does not exist', 'Unauthorized', null, 401);
   }
   return client;
 };
@@ -91,11 +92,12 @@ validate.clientExists = (client) => {
  * @returns {Promise} Resolved with the user or client associated with the token if valid
  */
 validate.token = (token, accessToken) => {
+
   utils.verifyToken(accessToken);
 
   // token is a user token
   if (token.userID != null) {
-    return db.users.find(token.userID)
+      return db.users.find(token.userID)
     .then(user => validate.userExists(user))
     .then(user => user);
   }
@@ -118,7 +120,7 @@ validate.token = (token, accessToken) => {
 validate.refreshToken = (token, refreshToken, client) => {
   utils.verifyToken(refreshToken);
   if (client.id !== token.clientID) {
-    validate.logAndThrow('RefreshToken clientID does not match client id given');
+    validate.logAndThrow('RefreshToken clientID does not match client id given','Bad Request', null, 400);
   }
   return refreshToken;
 };
@@ -138,10 +140,10 @@ validate.refreshToken = (token, refreshToken, client) => {
 validate.authCode = (code, authCode, client, redirectURI) => {
   utils.verifyToken(code);
   if (client.id !== authCode.clientID) {
-    validate.logAndThrow('AuthCode clientID does not match client id given');
+    validate.logAndThrow('AuthCode clientID does not match client id given', 'Bad Request', null, 400);
   }
   if (redirectURI !== authCode.redirectURI) {
-    validate.logAndThrow('AuthCode redirectURI does not match redirectURI given');
+    validate.logAndThrow('AuthCode redirectURI does not match redirectURI given', 'Bad Request', null, 400);
   }
   return authCode;
 };
