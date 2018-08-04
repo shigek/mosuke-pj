@@ -28,7 +28,7 @@
 <script>
 	$(function(){
         // datatableの設定を変更
-        $("#table1").DataTable();
+        $("#table1").DataTable({responsive: true,select: true});
     });
 </script>
 </datatables>
