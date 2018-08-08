@@ -1,7 +1,10 @@
 <datatables>
 
 <div class="container">
-	<div class="col-xs-12">
+	<div class="card">
+		<div class="card-header">
+		</div>
+		<div class="card-body">
 			<table id="table1" class="table table-bordered">
 					<thead>
 					<tr>
@@ -23,6 +26,7 @@
 					</tr>
 					</tbody>
 			</table>
+		</div>
 	</div>
 </div>
 <script>
