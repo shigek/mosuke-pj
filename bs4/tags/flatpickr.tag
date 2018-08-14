@@ -5,7 +5,14 @@
 		<div class="card-header">
 		</div>
 		<div class="card-body">
-			<p><input class="createdate" placeholder="ピッカーが表示されます"></p>
+		<form id="submit-form">
+			<input type="text" name="sample" ref="sample">
+			<input type="text" name="sample" ref="sample">
+			<input type="text" name="sample" ref="sample">
+			<input type="text" name="sample" ref="sample">
+			<p><input name="picker" ref="picker" class="createdate" placeholder="ピッカーが表示されます"></p>
+			<button type="submit" id="b-b" class="btn btn-outline-primary">submit</button>
+		</form>
 		</div>
 		<div class="card-footer">
 			<button type="button" id="a-b" class="btn btn-outline-primary" onClick={a}>...</button>
@@ -15,6 +22,20 @@
 <script>
 	$(document).ready(() => {
 		flatpickr('.createdate', { dateFormat: 'Y-m-d'})
+		$('#submit-form').on('submit', ()=> {
+			try {
+				let data = {}
+				let inputs = $('#submit-form :input')
+				inputs.each( (i, v) => {
+					if (v.attributes['ref']) {
+						data['ref'] = v.value;
+					}
+				})
+			console.log(data);
+			} catch (err) {
+			}
+			return false
+		})
 	})
 	this.a = (e) => {
 		$('#a-b').LoadingOverlay('show')
