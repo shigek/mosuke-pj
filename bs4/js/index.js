@@ -30,5 +30,7 @@ import 'flatpickr/dist/themes/material_orange.css'
 import "../tags/datatables.tag";
 import "../tags/flatpickr.tag";
 
-riot.mount('content', 'flatpickr');
+import "../tags/repeat.tag";
+
+riot.mount('content', 'repeat');
 route.start(true);
