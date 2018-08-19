@@ -2,31 +2,45 @@
 
 <div class="container">
 	<virtual each={item, i in items}>
-		<virtual each={layout, j in layouts}>
+		<virtual each={textarea, j in layout.textarea}>
 			<div class="form-group row text-right">
-				<label for="{layout.ref}">{layout.label}-{i+1}</label>
-				<input
-					type="{layout.type}"
-					name="{i}"
-					id="{layout.ref}"
-					ref="{layout.ref}" 
-					class="{layout.class}" 
-					value="{item[layout.ref]}">
+				<div class="col-sm-2">
+					<label for="{layout.ref[j]}">{layout.label[j]}-{i+1}</label>
+				</div>
+				<div if="{textarea}" class="col-sm-10">
+					<textarea
+						row="3"
+						type="{layout.type[j]}"
+						name="{i}"
+						id="{layout.ref[j]}"
+						ref="{layout.ref[j]}" 
+						class="{opts.subclass} {layout.class[j]}" 
+						value="{item[layout.ref[j]]}"></textarea>
+				</div>
+				<div if="{!textarea}" class="col-sm-10">
+					<input
+						type={type}
+						name="{i}"
+						id="{layout.ref[j]}"
+						ref="{layout.ref[j]}" 
+						class="{opts.subclass} {layout.class[j]}" 
+						value="{item[layout.ref[j]]}">
+				</div>
 			</div>
 		</virtual>
 	</virtual>
 	<div class="button-group">
 		<button type="button" id="a" class="btn btn-outline-primary" onClick={plus}>plus</button>
-		<button type="button" id="b" class="btn btn-outline-primary" onClick={minus}>minus</button>
+		<button if="{button}" type="button" id="b" class="btn btn-outline-primary" onClick={minus}>minus</button>
 	</div>
 </div>
 <script>
 	let self = this;
-	self.layouts = opts.layout
+	self.layout = opts.layout
 	self.items = opts.items
 	self.bkpickr = [];
 	this.on('mount', () => {
-		self.update()
+		self.update({button: (self.items.length === 1) ? false : true})
 	})
 
 	this.on('update', () => {
@@ -53,12 +67,14 @@
 
 	this.plus = (e) => {
 		self.items.push(1)
+		self.update({button:true})
 	}
 
 	this.minus = (e) => {
-		if( self.items.length > 1) {
-			self.items.pop()
-			self.bkpickr.pop()
+		self.items.pop()
+		self.bkpickr.pop()
+		if( self.items.length <= 1) {
+			self.update({button:false})
 		}
 	}
 </script>

@@ -3,11 +3,10 @@
 <div class="container">
 	<br>
 	<div class="card">
-		<div class="card-header">
-		</div>
+		<div class="card-header"></div>
 		<form id="submit-form">
 			<div class="card-body">
-				<repeat layout={layout} ref="repeat" items="{data.repeat}"></repeat>
+				<repeat layout={layout} subclass="form-control repeat" ref="repeat" items="{data.repeat}"></repeat>
 			</div>
 			<div class="card-footer">
 				<button type="submit" id="a-b" class="btn btn-outline-primary"}>Submit</button>
@@ -29,26 +28,13 @@
 		}
 	]}
 
-	self.layout = [
-		{
-			type: "text",
-			class: "form-control row text-right repeat",
-			label: "address",
-			ref: "address"
-		},
-		{
-			type: "text",
-			class: "form-control row text-right repeat",
-			label: "name",
-			ref: "name"
-		},
-		{
-			type: "text",
-			class: "sub-flatpickr form-control row text-right repeat",
-			label: "birthday",
-			ref: "birthday"
-		},
-	]
+	self.layout = {
+		textarea:[true, false, false],
+		type:["textarea", "text", "text"],
+		label:["address", "name", "birthday"],
+		ref:["address", "name", "birthday"],
+		class:["", "", "sub-flatpickr"]
+	}
 
 	this.on('mount', () => {
 		let hoge = [];
