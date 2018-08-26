@@ -1,0 +1,22 @@
+{
+    "po_status": {
+        "created": "1",
+        "checking": "2",
+        "agreement": "3",
+        "finished": "4"
+    },
+    "lc_apply_status": {
+        "created": "1"
+    },
+    "lc_status": {
+        "created": "1",
+        "notificated": "2"
+    },
+    "po": {
+        "100": "S001",
+        "110": "S002",
+        "111": "S003",
+        "112": "S004",
+        "400": "S005"
+    }
+}
