@@ -11,9 +11,19 @@ exports.validationMixin = {
             Validator.useLang('ja');
             let errors = {};
             for (let k in tags) {
-                const validation = new Validator(tags[k].refs);
-                if (validation.fails()) {
-                    Object.assign(errors, validation.errors.all());
+                if (Array.isArray(tags[k])) {
+                    for (let n in tags[k]) {
+                        const validation = new Validator(tags[k][n].refs);
+                        if (validation.fails()) {
+                            Object.assign(errors, validation.errors.all());
+                        }
+                    }
+                }
+                else {
+                    const validation = new Validator(tags[k].refs);
+                    if (validation.fails()) {
+                        Object.assign(errors, validation.errors.all());
+                    }
                 }
             }
             return errors;
@@ -24,7 +34,17 @@ exports.validationMixin = {
         alert(tags, errors) {
             for (let k in errors) {
                 const child = tags[$('#' + k).prop('tagName').toLowerCase()];
-                child.refs[k + '_span'].innerText = errors[k][0];
+                if (Array.isArray(child)) {
+                    for (let n in child) {
+                        if (child[n].ref === k) {
+                            child[n].refs[k + '_span'].innerText = errors[k][0];
+                            break;
+                        }
+                    }
+                }
+                else {
+                    child.refs[k + '_span'].innerText = errors[k][0];
+                }
             }
         }
     }
