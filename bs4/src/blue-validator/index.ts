@@ -7,11 +7,13 @@ interface ValidatorMixIn extends riot.TagMixin {
     validation(tags: any): any;
     fails(errors: any): any;
     alert(tags: any, errors: any): void;
+    clear(tags: any): void;
   }
 }
 export const validationMixin: ValidatorMixIn = {
   validator: {
     validation(tags: any) {
+      this.clear(tags);
       Validator.useLang('ja');
       let errors = {};
       for (let k in tags) {
@@ -46,6 +48,18 @@ export const validationMixin: ValidatorMixIn = {
           }
         } else {
           child.refs[k + '_span'].innerText = errors[k][0];
+        }
+      }
+    },
+    clear(tags: any): void {
+      for (let k in tags) {
+        const child = tags[k];
+        if (Array.isArray(tags[k])) {
+          for (let n in tags[k]) {
+            child[n].refs[child[n].ref + '_span'].innerText = '';
+          }
+        } else {
+          child.refs[child.ref + '_span'].innerText = '';
         }
       }
     }

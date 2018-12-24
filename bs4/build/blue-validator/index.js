@@ -8,6 +8,7 @@ const Validator = require('validatorjs-riot');
 exports.validationMixin = {
     validator: {
         validation(tags) {
+            this.clear(tags);
             Validator.useLang('ja');
             let errors = {};
             for (let k in tags) {
@@ -44,6 +45,19 @@ exports.validationMixin = {
                 }
                 else {
                     child.refs[k + '_span'].innerText = errors[k][0];
+                }
+            }
+        },
+        clear(tags) {
+            for (let k in tags) {
+                const child = tags[k];
+                if (Array.isArray(tags[k])) {
+                    for (let n in tags[k]) {
+                        child[n].refs[child[n].ref + '_span'].innerText = '';
+                    }
+                }
+                else {
+                    child.refs[child.ref + '_span'].innerText = '';
                 }
             }
         }
