@@ -4,11 +4,17 @@ var htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'none',
   entry: {
-    "app": './js/index.js'
+    "app": './build/main.js'
   },
   output: {
     path: __dirname + '/dist',
     filename: 'js/[name].bundle.js'
+  },
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      chunks: 'initial'
+    }
   },
   module: {
     rules: [
@@ -68,6 +74,9 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
+    }),
+    new webpack.ProvidePlugin({
+      riot: 'riot'
     }),
     new htmlWebpackPlugin({
       template: "./views/index.html",
