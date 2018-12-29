@@ -6,7 +6,7 @@
       </label>
     </div>
     <div class="col-sm-10">
-      <select id="{ref}" ref="{ref}" class="form-control" value="{value}" data-is="{datais}"></select>
+      <select id="{ref}" ref="{ref}" class="form-control" value="{value}" data-is="{datais}" validate="required"></select>
       <span ref="{ref}_span" class="float-left invalid"></span>
     </div>
   </div>

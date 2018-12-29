@@ -21,6 +21,10 @@ import 'datatables.net-select-bs4/css/select.bootstrap4.min.css';
 import 'datatables.net-select-bs4/css/select.bootstrap4.min.css';
 import 'flatpickr/dist/flatpickr.css';
 import 'flatpickr/dist/themes/material_orange.css';
+import '../fontawesome5.2.0/css/all.min.css'
+import '../modules/work/css/workspace.css'
+import '../modules/navbar-top/css/navbar-top.css'
+import '../modules/scroll-sidebar/css/scroll-sidebar.css'
 
 
 import '../modules';
@@ -33,6 +37,8 @@ import './blue-conversion';
 
 // import "../tags/main.tag";
 // import "../tags/repeat.tag";
+riot.mount('menu', 'scroll-sidebar');
+riot.mount('navbar-top', 'navbar-top');
+riot.mount('main', 'workspace');
 
-riot.mount('content', 'workspace');
 route.start(true);

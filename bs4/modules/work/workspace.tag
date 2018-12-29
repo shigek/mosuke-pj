@@ -1,5 +1,5 @@
 <workspace>
-  <div class="container">
+  <div class="container-fluid pl-0">
     <br>
     <div class="card">
       <div class="card-header"></div>

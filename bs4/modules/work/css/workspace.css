@@ -1,0 +1,35 @@
+/* layout */
+
+#wrapper {
+  width: 100%;
+  top: 0px;
+}
+#content-wrapper {
+  bottom: 50px;
+  position: fixed;
+  width: 100%;
+  top: 50px;
+}
+
+hr.dashed-line {
+  border-width: 1px 0px 0px 0px;
+  /* 太さ1px */
+  border-style: dashed;
+  /* 線種を破線に */
+  border-color: gray;
+  /* 線色を灰色に */
+  height: 1px;
+  /* 高さ(※古いIE用) */
+}
+
+div.required {
+  color: #E00;
+}
+
+div.required:after {
+  content: " *";
+}
+
+span.invalid {
+  color: #E00;
+}

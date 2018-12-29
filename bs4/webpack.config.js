@@ -1,5 +1,7 @@
-var webpack = require("webpack");
-var htmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const _express = require('express');
 
 module.exports = {
   mode: 'none',
@@ -14,6 +16,12 @@ module.exports = {
     splitChunks: {
       name: 'vendor',
       chunks: 'initial'
+    }
+  },
+  devServer: {
+    contentBase: 'dist',
+    before: (app, server) => {
+      app.use(_express.static(path.join(__dirname, 'fontawesome5.2.0')));
     }
   },
   module: {
@@ -82,5 +90,5 @@ module.exports = {
       template: "./views/index.html",
       filename: "./index.html"
     })
-  ]  
-}
+  ]
+};
