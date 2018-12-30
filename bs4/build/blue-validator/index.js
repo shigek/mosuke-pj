@@ -4,7 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const riot_1 = __importDefault(require("riot"));
-const Validator = require('validatorjs-riot');
+const Validator = require('../../validatorjs-riot');
+const jquery_1 = __importDefault(require("jquery"));
 exports.validationMixin = {
     validator: {
         validation(tags) {
@@ -34,7 +35,7 @@ exports.validationMixin = {
         },
         alert(tags, errors) {
             for (let k in errors) {
-                const child = tags[$('#' + k).prop('tagName').toLowerCase()];
+                const child = tags[jquery_1.default('#' + k).prop('tagName').toLowerCase()];
                 if (Array.isArray(child)) {
                     for (let n in child) {
                         if (child[n].ref === k) {

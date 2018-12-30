@@ -1,6 +1,8 @@
 
 import riot from 'riot';
-const Validator = require('validatorjs-riot');
+const Validator = require('../../validatorjs-riot');
+import $ from 'jquery';
+
 //mixin
 interface ValidatorMixIn extends riot.TagMixin {
   validator: {
