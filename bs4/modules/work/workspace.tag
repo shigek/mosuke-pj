@@ -2,13 +2,13 @@
   <div class="container-fluid pl-0">
     <br>
     <div class="card">
-      <div class="card-header"></div>
+      <div id="workspace-header" class="card-header"></div>
 
       <form id="submit-form">
-        <div class="card-body">
+        <div id="workspace-body" class="card-body">
           <div data-is="{body}"></div>
         </div>
-        <div class="card-footer">
+        <div id="workspace-footer" class="card-footer">
           <button type="submit" id="a-b" class="btn btn-outline-primary" }>Submit</button>
         </div>
       </form>

@@ -5,6 +5,7 @@
   "main": "./build/main.js",
   "scripts": {
     "build": "tsc & webpack --env production  & webpack-dev-server",
+    "build:dev": "tsc & webpack & webpack-dev-server",
     "start": "webpack-dev-server"
   },
   "author": "",

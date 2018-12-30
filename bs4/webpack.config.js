@@ -9,7 +9,7 @@ module.exports = env => {
     mode: mode,
     devtool: (mode === 'development') ? 'inline-source-map' : false,
     entry: {
-      app: ['babel-polyfill', './build/main.js']
+      app: ['./build/main.js']
     },
     output: {
       path: __dirname + '/dist',
