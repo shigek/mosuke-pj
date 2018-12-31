@@ -73,7 +73,7 @@ body {
   margin: 2px;
 }
 
-.page-wrapper .theme.chiller-theme {
+.page-wrapper .theme.dark-theme {
   background: #1d1d1d;
 }
 
@@ -126,7 +126,7 @@ body {
   left: -40px;
 }
 
-.chiller-theme #show-sidebar {
+.dark-theme #show-sidebar {
   background: #1d1d1d;
 }
 
@@ -212,6 +212,8 @@ body {
 
 .sidebar-wrapper .sidebar-header .user-pic i {
   color: #bdbdbd;
+  height: 100%;
+  width: 100%;
 }
 
 .sidebar-wrapper .sidebar-header .user-info {
@@ -440,90 +442,90 @@ body {
   background: transparent;
 }
 
-/*-----------------------------chiller-theme-------------------------------------------------*/
+/*-----------------------------dark-theme-------------------------------------------------*/
 
-.chiller-theme .sidebar-wrapper {
+.dark-theme .sidebar-wrapper {
     background: #1d1d1d;
 }
 
-.chiller-theme .sidebar-wrapper .sidebar-header,
-.chiller-theme .sidebar-wrapper .sidebar-search,
+.dark-theme .sidebar-wrapper .sidebar-header,
+.dark-theme .sidebar-wrapper .sidebar-search,
 .chiller-theme .sidebar-wrapper .sidebar-menu {
     border-top: 1px solid #2b2b2b;
 }
 
-.chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
-.chiller-theme .sidebar-wrapper .sidebar-search .input-group-text {
+.dark-theme .sidebar-wrapper .sidebar-search input.search-menu,
+.dark-theme .sidebar-wrapper .sidebar-search .input-group-text {
     border-color: #2b2b2b;
     box-shadow: none;
 }
 
-.chiller-theme .sidebar-wrapper .sidebar-header .user-info .user-role,
-.chiller-theme .sidebar-wrapper .sidebar-header .user-info .user-status,
-.chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
-.chiller-theme .sidebar-wrapper .sidebar-search .input-group-text,
-.chiller-theme .sidebar-wrapper .sidebar-brand>a,
-.chiller-theme .sidebar-wrapper .sidebar-menu ul li a,
-.chiller-theme #show-sidebar>a,
-.chiller-theme .sidebar-footer>a {
+.dark-theme .sidebar-wrapper .sidebar-header .user-info .user-role,
+.dark-theme .sidebar-wrapper .sidebar-header .user-info .user-status,
+.dark-theme .sidebar-wrapper .sidebar-search input.search-menu,
+.dark-theme .sidebar-wrapper .sidebar-search .input-group-text,
+.dark-theme .sidebar-wrapper .sidebar-brand>a,
+.dark-theme .sidebar-wrapper .sidebar-menu ul li a,
+.dark-theme #show-sidebar>a,
+.dark-theme .sidebar-footer>a {
     color: #bdbdbd;
 }
 
-.chiller-theme .sidebar-wrapper .sidebar-menu ul li:hover>a,
-.chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active>a,
-.chiller-theme .sidebar-wrapper .sidebar-header .user-info,
-.chiller-theme .sidebar-wrapper .sidebar-brand>a:hover,
-.chiller-theme #show-sidebar>a:hover,
-.chiller-theme .sidebar-footer>a:hover i {
+.dark-theme .sidebar-wrapper .sidebar-menu ul li:hover>a,
+.dark-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active>a,
+.dark-theme .sidebar-wrapper .sidebar-header .user-info,
+.dark-theme .sidebar-wrapper .sidebar-brand>a:hover,
+.dark-theme #show-sidebar>a:hover,
+.dark-theme .sidebar-footer>a:hover i {
     color: #ffffff;
 }
 
-.page-wrapper.chiller-theme.toggled #toggle-sidebar div {
+.page-wrapper.dark-theme.toggled #toggle-sidebar div {
     background: #bdbdbd;
 }
 
-.page-wrapper.chiller-theme.toggled #toggle-sidebar:hover div {
+.page-wrapper.dark-theme.toggled #toggle-sidebar:hover div {
     background: #ffffff;
 }
 
-.chiller-theme .sidebar-wrapper ul li:hover a i,
-.chiller-theme .sidebar-wrapper .sidebar-dropdown .sidebar-submenu li a:hover:before,
-.chiller-theme .sidebar-wrapper .sidebar-search input.search-menu:focus+span,
-.chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active a i {
+.dark-theme .sidebar-wrapper ul li:hover a i,
+.dark-theme .sidebar-wrapper .sidebar-dropdown .sidebar-submenu li a:hover:before,
+.dark-theme .sidebar-wrapper .sidebar-search input.search-menu:focus+span,
+.dark-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active a i {
     color: #ffffff;
 }
 
-.chiller-theme .sidebar-wrapper .sidebar-menu ul li a i,
-.chiller-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div,
-.chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
-.chiller-theme .sidebar-wrapper .sidebar-search .input-group-text {
+.dark-theme .sidebar-wrapper .sidebar-menu ul li a i,
+.dark-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div,
+.dark-theme .sidebar-wrapper .sidebar-search input.search-menu,
+.dark-theme .sidebar-wrapper .sidebar-search .input-group-text {
     background: #2b2b2b;
 }
 
-.chiller-theme .sidebar-wrapper .sidebar-menu .header-menu span {
+.dark-theme .sidebar-wrapper .sidebar-menu .header-menu span {
     color: #6c7b88;
 }
 
-.chiller-theme .sidebar-footer {
+.dark-theme .sidebar-footer {
     background: #2b2b2b;
     box-shadow: 0px -1px 5px #131212;
     border-top: 1px solid #3a3a3a;
 }
 
-.chiller-theme .sidebar-footer>a:first-child {
+.dark-theme .sidebar-footer>a:first-child {
     border-left: none;
 }
 
-.chiller-theme .sidebar-footer>a:last-child {
+.dark-theme .sidebar-footer>a:last-child {
     border-right: none;
 }
 
-.chiller-theme .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
-.chiller-theme .mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
-.chiller-theme .mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+.dark-theme .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.dark-theme .mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar,
+.dark-theme .mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
     background: #636363;
 }
 
-.chiller-theme .mCSB_scrollTools .mCSB_draggerRail {
+.dark-theme .mCSB_scrollTools .mCSB_draggerRail {
     background-color: transparent;
 }

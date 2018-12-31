@@ -1,4 +1,7 @@
 <scroll-sidebar>
+    <div id="show-sidebar">
+        <a href="#"><i class="fa fa-fw fa-bars fa-pull-right"></i></a>
+      </div>
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div id="toggle-sidebar">
@@ -23,9 +26,8 @@
   <script>
     const tag = this
     tag.show_close = opts.show_close || false
-    tag.brand = opts.brand || ''
-    tag.brand_url = opts.brand_url || ''
-    tag.menu = opts.menu || ''
+    tag.brand = opts.brand || '{brand}'
+    tag.brand_url = opts.brand_url || '#'
     tag.on('mount', _onMount);
 
     function _onMount() {
