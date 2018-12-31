@@ -1,6 +1,7 @@
 import riot from 'riot';
 import route from 'riot-route';
 import 'riot-i18n';
+import 'riot-i18nlet'
 
 import 'bootstrap';
 import 'datatables.net/js/jquery.dataTables.min.js';

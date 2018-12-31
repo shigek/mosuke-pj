@@ -4,25 +4,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const riot_1 = __importDefault(require("riot"));
-const Validator = require('../../validatorjs-riot');
+const validaotrs_riot_1 = __importDefault(require("../validaotrs-riot"));
 const jquery_1 = __importDefault(require("jquery"));
 exports.validationMixin = {
     validator: {
         validation(tags) {
             this.clear(tags);
-            Validator.useLang('ja');
+            validaotrs_riot_1.default.useLang('ja');
             let errors = {};
             for (let k in tags) {
                 if (Array.isArray(tags[k])) {
                     for (let n in tags[k]) {
-                        const validation = new Validator(tags[k][n].refs);
+                        const validation = new validaotrs_riot_1.default(tags[k][n].refs);
                         if (validation.fails()) {
                             Object.assign(errors, validation.errors.all());
                         }
                     }
                 }
                 else {
-                    const validation = new Validator(tags[k].refs);
+                    const validation = new validaotrs_riot_1.default(tags[k].refs);
                     if (validation.fails()) {
                         Object.assign(errors, validation.errors.all());
                     }

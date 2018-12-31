@@ -1,6 +1,6 @@
 
 import riot from 'riot';
-const Validator = require('../../validatorjs-riot');
+import Validator from '../validaotrs-riot';
 import $ from 'jquery';
 
 //mixin

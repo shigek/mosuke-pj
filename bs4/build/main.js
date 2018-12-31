@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const riot_1 = __importDefault(require("riot"));
 const riot_route_1 = __importDefault(require("riot-route"));
 require("riot-i18n");
+require("riot-i18nlet");
 require("bootstrap");
 require("datatables.net/js/jquery.dataTables.min.js");
 require("datatables.net-bs4/js/dataTables.bootstrap4.min.js");
