@@ -1,7 +1,6 @@
 import riot from 'riot';
 import route from 'riot-route';
 import 'riot-i18n';
-import 'riot-i18nlet'
 
 import 'bootstrap';
 import 'datatables.net/js/jquery.dataTables.min.js';
@@ -30,14 +29,10 @@ import '../modules/scroll-sidebar/css/scroll-sidebar.css'
 
 import '../modules';
 import '../demo';
+import './blue-i18n';
 import './blue-validator';
 import './blue-conversion';
 
-// import "../tags/datatables.tag";
-// import "../tags/flatpickr.tag";
-
-// import "../tags/main.tag";
-// import "../tags/repeat.tag";
 riot.mount('menu', 'scroll-sidebar');
 riot.mount('navbar-top', 'navbar-top');
 riot.mount('main', 'workspace');

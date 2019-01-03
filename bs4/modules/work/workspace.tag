@@ -1,7 +1,7 @@
 <workspace>
   <div class="container-fluid pl-0">
     <br>
-    <div class="card">
+    <div class="card card-shadow">
       <div id="workspace-header" class="card-header"></div>
 
       <form id="submit-form">
