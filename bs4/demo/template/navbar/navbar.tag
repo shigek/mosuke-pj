@@ -5,7 +5,7 @@
     <ul class="navbar-nav mr-auto">
       <!-- 1 -->
       <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="#workspace?work=demo">
           <riot-i18nlet context="Home" /> <span class="sr-only">(現位置)</span></a>
       </li>
       <li class="nav-item">
@@ -28,9 +28,9 @@
             <i class="fas fa-users"></i>
             <riot-i18nlet context="users" /></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#workspace?work=language">
+          <a class="dropdown-item" href="#workspace?work=settings">
             <i class="fa fa-globe-africa"></i>
-            <riot-i18nlet context="language" /></a>
+            <riot-i18nlet context="settings" /></a>
         </div>
       </li>
 

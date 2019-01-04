@@ -1,7 +1,8 @@
-<language>
+<settings>
   <fieldset>
-    <legend>Controls Bootstrap</legend>
-    <select-datais label="language" id="language" required=true datais="language-option" data="{data}"></select-datais>
+    <legend>
+      <riot-i18nlet context="General" /></legend>
+      <select-datais label="language" id="language" required=true datais="language-option" data="{data}"></select-datais>
   </fieldset>
   <script>
     const tag = this
@@ -17,9 +18,9 @@
     function _onMount() {
     }
     function _onUnmount() {
-      tag.notify.off('submit-language')
+      tag.notify.off('submit-settings')
     }
-    tag.notify.on('submit-language', (obj) => {
+    tag.notify.on('submit-settings', (obj) => {
       const value = tag.tags['select-datais'].refs['language'].value
       tag.lang.setLanguage(value)
       tag.data = value
@@ -27,4 +28,4 @@
     })
 
   </script>
-</language>
+</settings>

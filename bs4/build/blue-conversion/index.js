@@ -12,6 +12,9 @@ exports.conversionMixin = {
         },
         toDateFormat(str, delimiter) {
             return str.substr(0, 4) + delimiter + str.substr(4, 2) + delimiter + str.substr(6, 2);
+        },
+        contains(str, key) {
+            return str.indexOf(key) !== -1;
         }
     }
 };

@@ -1,17 +1,30 @@
 <demo>
   <fieldset>
-    <legend>Controls Bootstrap</legend>
-    <input-text label="status" id="status" data="hoge" required=true validate="required"></input-text>
-    <input-area label="memo" id="memo" data="hoge hoge" required=true></input-area>
-    <input-date label="birthday" id="birthdaty" data="2011-01-01" required=true allowinput=true></input-date>
-    <select-datais label="sex" id="sex" required=true></select-datais>
-    <input-text label="email" id="email" required=true validate="required|email"></input-text>
+    <legend id="group1-labelledby">
+      Controls Bootstrap
+      <a href="#group-1" 
+        class="collapsed text-body" 
+        role="button" 
+        data-toggle="collapse" 
+        aria-expanded="true" 
+        aria-controls="group-1"></a>
+    </legend>
+    <div class="collapse show" role="tabpanel" id="group-1" aria-labelledby="group1-labelledby" aria-expanded="true">
+      <input-text label="status" id="status" data="hoge" validate="required"></input-text>
+      <input-area label="memo" id="memo" data="hoge hoge"></input-area>
+      <input-date label="birthday" id="birthdaty" data="2011-01-01" validate="required" allowinput=true></input-date>
+      <select-datais label="sex" id="sex" datais="sex-option"></select-datais>
+      <input-text label="email" id="email" validate="required|email"></input-text>
+      <hr class="dashed-line">
+    </div>
   </fieldset>
-  <hr class="dashed-line">
   <script>
     const tag = this
     tag.on('mount', _onMount)
-    tag.mixin('notify');
+    tag.mixin('lang')
+    tag.mixin('notify')
+    tag.lang.loads(require('./lang/en'))
+    tag.lang.loads(require('./lang/ja'))
 
     function _onMount() {
     }

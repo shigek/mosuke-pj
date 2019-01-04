@@ -39,13 +39,17 @@ exports.validationMixin = {
                 if (Array.isArray(child)) {
                     for (let n in child) {
                         if (child[n].ref === k) {
-                            child[n].refs[k + '_span'].innerText = errors[k][0];
-                            break;
+                            if (child[n].refs[child[n].ref + '_span'] !== undefined) {
+                                child[n].refs[k + '_span'].innerText = errors[k][0];
+                                break;
+                            }
                         }
                     }
                 }
                 else {
-                    child.refs[k + '_span'].innerText = errors[k][0];
+                    if (child.refs[k + '_span'] !== undefined) {
+                        child.refs[k + '_span'].innerText = errors[k][0];
+                    }
                 }
             }
         },
@@ -54,11 +58,15 @@ exports.validationMixin = {
                 const child = tags[k];
                 if (Array.isArray(tags[k])) {
                     for (let n in tags[k]) {
-                        child[n].refs[child[n].ref + '_span'].innerText = '';
+                        if (child[n].refs[child[n].ref + '_span'] !== undefined) {
+                            child[n].refs[child[n].ref + '_span'].innerText = '';
+                        }
                     }
                 }
                 else {
-                    child.refs[child.ref + '_span'].innerText = '';
+                    if (child.refs[k + '_span'] !== undefined) {
+                        child.refs[child.ref + '_span'].innerText = '';
+                    }
                 }
             }
         }

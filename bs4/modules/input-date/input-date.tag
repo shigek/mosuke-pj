@@ -2,11 +2,12 @@
   <div class="form-group row text-right">
     <div id="{ref}_dev" class="col-sm-2 col-form-label required">
       <label for="{ref}">
-        <i18-n>{label}</i18-n>
+        <riot-i18nlet context="{label}" />
       </label>
     </div>
     <div class="col-sm-10">
-      <input type="text" id="{ref}" ref="{ref}" class="form-control {ref}_flatpickr" value="{data}">
+      <input type="text" id="{ref}" ref="{ref}" class="form-control {ref}_flatpickr" value="{data}" ref-label="{ref_label}"
+        validate="{validate}">
       <span ref="{ref}_span" class="float-left invalid"></span>
     </div>
   </div>
@@ -14,16 +15,18 @@
     const tag = this
 
     tag.mixin('conversion')
+    tag.mixin('lang')
     tag.on('mount', _onMount)
 
-    tag.required = tag.conversion.toBoolean(opts.required)
-
     tag.validate = opts.validate || ''
+    tag.required = tag.conversion.contains(tag.validate, 'required')
+
     tag.ref = opts.id;
     tag.disabled = tag.conversion.toBoolean(opts.disabled)
     tag.readOnly = tag.conversion.toBoolean(opts.readOnly)
     tag.data = opts.data
     tag.label = opts.label
+    tag.ref_label = tag.lang.i18n().i(tag.label)
     tag.allowInput = tag.conversion.toBoolean(opts.allowinput)
     tag.dateFormat = opts.dateFormat || 'Y-m-d'
 
