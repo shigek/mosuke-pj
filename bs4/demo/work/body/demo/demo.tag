@@ -10,5 +10,10 @@
   <hr class="dashed-line">
   <script>
     const tag = this
+    tag.on('mount', _onMount)
+    tag.mixin('notify');
+
+    function _onMount() {
+    }
   </script>
 </demo>

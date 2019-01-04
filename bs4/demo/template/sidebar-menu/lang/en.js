@@ -9,7 +9,7 @@ const dic = {
     'E-commerce': 'E-commerce',
     'Products': 'Products',
     'Orders': 'Orders',
-    'Credit card': 'Credit card',
+    'Credit cart': 'Credit cart',
 
     'Components': 'Components',
     'Panels': 'Panels',

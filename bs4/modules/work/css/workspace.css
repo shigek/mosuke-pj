@@ -10,7 +10,9 @@
   width: 100%;
   top: 50px;
 }
-
+#workspace {
+  height: 80vh;
+}
 hr.dashed-line {
   border-width: 1px 0px 0px 0px;
   /* 太さ1px */
@@ -20,6 +22,10 @@ hr.dashed-line {
   /* 線色を灰色に */
   height: 1px;
   /* 高さ(※古いIE用) */
+}
+
+.hide {
+  display:none;
 }
 
 div.required {

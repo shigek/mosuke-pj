@@ -58,7 +58,7 @@
     tag.mixin('lang')
     tag.lang.loads(require('./lang/en.js'))
     tag.lang.loads(require('./lang/ja.js'))
-    tag.lang.setLanguage('ja')
+    tag.lang.setLanguage(tag.lang.getLanguage())
 
     tag.items = [
       {

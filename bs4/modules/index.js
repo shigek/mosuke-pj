@@ -1,3 +1,4 @@
+import './guidance/guidance.tag';
 import './work/workspace.tag';
 import './input-text/input-text.tag';
 import './input-area/input-area.tag';

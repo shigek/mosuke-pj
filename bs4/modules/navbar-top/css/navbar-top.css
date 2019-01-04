@@ -24,6 +24,12 @@ a:hover {
 	background-color: #3c8dbc
 }
 
+/** ======================  dropdown menu ==============================**/
+.dropdown-menu a i {
+	margin-right: 10px;
+}
+
+/** ======================  theme ==============================**/
 .page-wrapper.theme.goldenrod-theme .navbar-content .header {
 	background-color: #daa520;
 	border-bottom: 1px solid #fab530;

@@ -19,6 +19,7 @@
     "flatpickr": "^4.5.2",
     "gasparesganga-jquery-loading-overlay": "^2.1.6",
     "jquery": "^3.3.1",
+    "jquery-transition-support": "^1.0.2",
     "popper.js": "^1.14.6",
     "riot": "^3.13.2",
     "riot-i18n": "^0.2.1",

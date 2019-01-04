@@ -21,7 +21,9 @@
   <div class="navbar-content">
     <navbar-top navbar="navbar"></navbar-top>
   </div>
-  <main class="page-content"></main>
+  <guidance class="guidance-content"></guidance>
+  <main class="page-content">
+  </main>
 
   <script>
     const tag = this

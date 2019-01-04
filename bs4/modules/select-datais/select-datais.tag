@@ -2,11 +2,11 @@
   <div class="form-group row text-right">
     <div id="{ref}_dev" class="col-sm-2 col-form-label">
       <label for="{ref}">
-        <i18-n>{label}</i18-n>
+        <riot-i18nlet context="{label}" />
       </label>
     </div>
     <div class="col-sm-10">
-      <select id="{ref}" ref="{ref}" class="form-control" value="{value}" data-is="{datais}" validate="required"></select>
+      <select id="{ref}" ref="{ref}" class="form-control" value="{data}" data-is="{datais}" validate="required"></select>
       <span ref="{ref}_span" class="float-left invalid"></span>
     </div>
   </div>
@@ -14,12 +14,13 @@
     const tag = this
     tag.mixin('conversion')
     tag.on('mount', _onMount)
+    tag.on('updated', _onUpdated)
 
     tag.required = tag.conversion.toBoolean(opts.required)
     tag.ref = opts.id;
     tag.disabled = tag.conversion.toBoolean(opts.disabled)
     tag.readOnly = tag.conversion.toBoolean(opts.readOnly)
-    tag.value = opts.value
+    tag.data = opts.data
     tag.label = opts.label
     tag.datais = opts.datais || 'default-option'
 
@@ -28,11 +29,20 @@
         $('#' + tag.ref + '_dev').addClass('required')
       }
       if (tag.disabled === true) {
-        $('#' + tag.ref).prop('disabled', 'disabled')
+        $('#' + tag.ref + ' select').prop('disabled', 'disabled')
       }
       if (tag.readOnly === true) {
-        $('#' + tag.ref).prop('readOnly', 'readOnly')
+        $('#' + tag.ref + ' select').prop('readOnly', 'readOnly')
       }
+      $('#' + tag.ref + ' select').change((e) => {
+        tag.refs[tag.ref].value = e.target.value
+        tag.data = e.target.value
+      })
+      tag.refs[tag.ref].value = tag.data
+      tag.update()
+    }
+    function _onUpdated() {
+      $('#' + tag.ref + ' select').val(tag.data)
     }
   </script>
 </select-datais>

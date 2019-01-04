@@ -29,12 +29,19 @@ import '../modules/scroll-sidebar/css/scroll-sidebar.css'
 
 import '../modules';
 import '../demo';
+import './blue-notify';
 import './blue-i18n';
 import './blue-validator';
 import './blue-conversion';
+const obs = riot.observable();
 
 riot.mount('menu', 'scroll-sidebar');
 riot.mount('navbar-top', 'navbar-top');
+riot.mount('guidance', 'guidance');
 riot.mount('main', 'workspace');
+
+route('/workspace?work=*', (work) => {
+  riot.mount('main', 'workspace', { work: work });
+});
 
 route.start(true);

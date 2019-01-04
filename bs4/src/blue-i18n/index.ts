@@ -7,6 +7,7 @@ interface I18nRiotMixin extends riot.TagMixin {
     loads(dic:any): any;
     setLanguage(lang: string): void;
     getLanguage(): string;
+    i18n(): any;
   }
 }
 
@@ -23,6 +24,9 @@ export const i18nRiotMixin: I18nRiotMixin = {
     },
     getLanguage(): string {
       return riotI18nlet.settings.currentLangage;
+    },
+    i18n(): any {
+      return riotI18nlet;
     }
   }
 }

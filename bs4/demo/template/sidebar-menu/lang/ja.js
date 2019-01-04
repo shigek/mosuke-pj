@@ -9,7 +9,7 @@ const dic = {
     'E-commerce': 'E コマース',
     'Products': '製品情報',
     'Orders': 'ご注文',
-    'Credit cart': 'クレジットカード',
+    'Credit cart': 'クレジット　カート',
 
     'Components': 'コンポーネント',
     'Panels': 'パネル',

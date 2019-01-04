@@ -358,17 +358,34 @@ body {
   animation: sonar 1.5s infinite;
 }
 
+/*--------------------------guidance-content-----------------------------*/
+.page-wrapper .guidance-content {
+  display: inline-block;
+  width: 100%;
+  padding-left: 0px;
+  padding-top: 0px;
+}
+
+.page-wrapper .guidance-content > div {
+  padding: 20px 40px 0px 260px;
+}
+
+.page-wrapper .guidance-content {
+  overflow-x: hidden;
+}
+
 /*--------------------------page-content-----------------------------*/
 
 .page-wrapper .page-content {
   display: inline-block;
   width: 100%;
   padding-left: 0px;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .page-wrapper .page-content > div {
-  padding: 20px 40px;
+  /* padding: 0px 40px; */
+  padding: 0px 40px 5px 260px;
 }
 
 .page-wrapper .page-content {
