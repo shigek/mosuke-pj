@@ -27,13 +27,15 @@ import '../modules/navbar-top/css/navbar-top.css'
 import '../modules/scroll-sidebar/css/scroll-sidebar.css'
 
 
-import '../modules';
-import '../demo';
 import './blue-notify';
 import './blue-i18n';
 import './blue-validator';
 import './blue-conversion';
-const obs = riot.observable();
+import './blue-theme';
+
+import '../modules';
+import '../demo';
+
 
 riot.mount('menu', 'scroll-sidebar');
 riot.mount('navbar-top', 'navbar-top');

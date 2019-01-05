@@ -21,15 +21,9 @@
           <riot-i18nlet context="settings" />
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">
-            <i class="fas fa-user-tag"></i>
-            <riot-i18nlet context="signup" /></a>
-          <a class="dropdown-item" href="#">
-            <i class="fas fa-users"></i>
-            <riot-i18nlet context="users" /></a>
-          <div class="dropdown-divider"></div>
+          <!-- <div class="dropdown-divider"></div> -->
           <a class="dropdown-item" href="#workspace?work=settings">
-            <i class="fa fa-globe-africa"></i>
+            <i class="fa fa-cog"></i>
             <riot-i18nlet context="settings" /></a>
         </div>
       </li>

@@ -3,7 +3,8 @@ const dic = {
     'en': 'English',
     'ja': 'Japanese',
     'language': 'Language',
-    'title': 'Language setting'
+    'title': 'Language setting',
+    'theme': 'Theme'
   }
 };
 module.exports = dic;
