@@ -1,6 +1,6 @@
 <scroll-sidebar>
     <div id="show-sidebar">
-        <a href="#"><i class="fa fa-fw fa-bars fa-pull-right"></i></a>
+        <a href="javascript:void(0)"><i class="fa fa-fw fa-bars fa-pull-right"></i></a>
       </div>
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
@@ -10,7 +10,7 @@
         <div></div>
       </div>
       <div class="sidebar-brand">
-        <a id="close-sidebar" href="#" class="button-center"><i class="fa fa-fw fa-bars"></i></a>
+        <a id="close-sidebar" href="javascript:void(0)" class="button-center"><i class="fa fa-fw fa-bars"></i></a>
         <a if={brand_url} href="{brand_url}">{brand}</a>
       </div>
       <div class="sidebar-header p-0" data-is="sidebar-header"></div>
