@@ -21,7 +21,7 @@
         </li>
         <virtual each={dropdown in menu.dropdown}>
           <li class="sidebar-dropdown">
-            <a href="#">
+            <a href="#" class="{disabled:dropdown.disabled}">
               <i class="{dropdown.i}"></i>
               <riot-i18nlet context="{dropdown.label}" />
               <span class="badge badge-pill badge-{dropdown.badge_color}">{dropdown.badge}</span>
@@ -30,7 +30,7 @@
               <ul>
                 <virtual each={submenu in dropdown.submenu}>
                   <li>
-                    <a href="{submenu.href}">
+                    <a href="{submenu.href}" class="{disabled:submenu.disabled}">
                       <riot-i18nlet context="{submenu.label}" />
                       <span class="badge badge-pill badge-{submenu.badge_color}">{submenu.badge}</span>
                     </a>
@@ -42,7 +42,7 @@
         </virtual>
         <virtual each={link in menu.link}>
           <li>
-            <a href="{link.href}">
+            <a href="{link.href}" class="{disabled:link.disabled}">
               <i class="{link.i}"></i>
               <riot-i18nlet context="{link.label}" />
             </a>

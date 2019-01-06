@@ -26,24 +26,26 @@ import '../modules/work/css/workspace.css'
 import '../modules/navbar-top/css/navbar-top.css'
 import '../modules/scroll-sidebar/css/scroll-sidebar.css'
 
+import './lib/blue-notify';
+import './lib/blue-i18n';
+import './lib/blue-validator';
+import './lib/blue-conversion';
+import './lib/blue-theme';
 
-import './blue-notify';
-import './blue-i18n';
-import './blue-validator';
-import './blue-conversion';
-import './blue-theme';
+import './biz/demo';
 
 import '../modules';
 import '../demo';
 
-
 riot.mount('menu', 'scroll-sidebar');
 riot.mount('navbar-top', 'navbar-top');
 riot.mount('guidance', 'guidance');
-riot.mount('main', 'workspace');
 
-route('/workspace?work=*', (work) => {
-  riot.mount('main', 'workspace', { work: work });
+route('/*', (name) => {
+  riot.mount('main', 'workspace', { header: '', body: name, footer: '' });
 });
 
+route('/', () => {
+  riot.mount('main', 'workspace', { header: '', body: 'blank', footer: '' });
+});
 route.start(true);

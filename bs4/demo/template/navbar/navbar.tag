@@ -5,7 +5,7 @@
     <ul class="navbar-nav mr-auto">
       <!-- 1 -->
       <li class="nav-item active">
-        <a class="nav-link" href="#workspace?work=demo">
+        <a class="nav-link" href="#demo">
           <riot-i18nlet context="Home" /> <span class="sr-only">(現位置)</span></a>
       </li>
       <li class="nav-item">
@@ -22,7 +22,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <!-- <div class="dropdown-divider"></div> -->
-          <a class="dropdown-item" href="#workspace?work=settings">
+          <a class="dropdown-item" href="#settings">
             <i class="fa fa-cog"></i>
             <riot-i18nlet context="settings" /></a>
         </div>

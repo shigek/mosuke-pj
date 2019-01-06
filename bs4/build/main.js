@@ -26,18 +26,21 @@ require("../fontawesome5.2.0/css/all.min.css");
 require("../modules/work/css/workspace.css");
 require("../modules/navbar-top/css/navbar-top.css");
 require("../modules/scroll-sidebar/css/scroll-sidebar.css");
-require("./blue-notify");
-require("./blue-i18n");
-require("./blue-validator");
-require("./blue-conversion");
-require("./blue-theme");
+require("./lib/blue-notify");
+require("./lib/blue-i18n");
+require("./lib/blue-validator");
+require("./lib/blue-conversion");
+require("./lib/blue-theme");
+require("./biz/demo");
 require("../modules");
 require("../demo");
 riot_1.default.mount('menu', 'scroll-sidebar');
 riot_1.default.mount('navbar-top', 'navbar-top');
 riot_1.default.mount('guidance', 'guidance');
-riot_1.default.mount('main', 'workspace');
-riot_route_1.default('/workspace?work=*', (work) => {
-    riot_1.default.mount('main', 'workspace', { work: work });
+riot_route_1.default('/*', (name) => {
+    riot_1.default.mount('main', 'workspace', { header: '', body: name, footer: '' });
+});
+riot_route_1.default('/', () => {
+    riot_1.default.mount('main', 'workspace', { header: '', body: 'blank', footer: '' });
 });
 riot_route_1.default.start(true);

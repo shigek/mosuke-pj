@@ -15,11 +15,14 @@
   </div>
   <script>
     const tag = this
-    tag.errors = {}
-    tag.body = opts.work || 'demo'
     tag.on('mount', _onMount)
     tag.mixin('validator')
     tag.mixin('notify')
+
+    tag.errors = {}
+    tag.header = opts.header || ''
+    tag.body = opts.body || 'blank'
+    tag.footer = opts.footer || ''
 
     function _onMount() {
       $('#workspace').fadeIn(500);
