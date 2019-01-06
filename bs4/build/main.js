@@ -31,16 +31,26 @@ require("./lib/blue-i18n");
 require("./lib/blue-validator");
 require("./lib/blue-conversion");
 require("./lib/blue-theme");
-require("./biz/demo");
+require("./lib/blue-ui");
 require("../modules");
 require("../demo");
 riot_1.default.mount('menu', 'scroll-sidebar');
 riot_1.default.mount('navbar-top', 'navbar-top');
 riot_1.default.mount('guidance', 'guidance');
+riot_route_1.default('/navbar/*', (name) => {
+    console.log("aa");
+    riot_1.default.mount('main', 'workspace', { action: name });
+});
+riot_route_1.default('/sidemenu/*/*', (menu, submenu) => {
+    console.log("bb");
+    riot_1.default.mount('main', 'workspace', { action: menu + '.' + submenu });
+});
 riot_route_1.default('/*', (name) => {
-    riot_1.default.mount('main', 'workspace', { header: '', body: name, footer: '' });
+    console.log("cc");
+    riot_1.default.mount('main', 'workspace', { action: name });
 });
 riot_route_1.default('/', () => {
-    riot_1.default.mount('main', 'workspace', { header: '', body: 'blank', footer: '' });
+    console.log("dd");
+    riot_1.default.mount('main', 'workspace', { action: 'blank' });
 });
 riot_route_1.default.start(true);

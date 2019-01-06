@@ -21,7 +21,7 @@
         </li>
         <virtual each={dropdown in menu.dropdown}>
           <li class="sidebar-dropdown">
-            <a href="#" class="{disabled:dropdown.disabled}">
+            <a href="javascript:void(0)" class="{disabled:dropdown.disabled}">
               <i class="{dropdown.i}"></i>
               <riot-i18nlet context="{dropdown.label}" />
               <span class="badge badge-pill badge-{dropdown.badge_color}">{dropdown.badge}</span>
@@ -67,7 +67,7 @@
           {
             i: 'fa fa-tachometer-alt', label: 'Dashboard', badge: 'New', badge_color: 'danger',
             submenu: [
-              { label: 'Dashboard 1', href: '#', badge: 'Pro', badge_color: 'success' },
+              { label: 'Dashboard 1', href: '/#sidemenu/dashbord/1', badge: 'Pro', badge_color: 'success' },
               { label: 'Dashboard 2', href: '#' },
               { label: 'Dashboard 3', href: '#' }
             ]

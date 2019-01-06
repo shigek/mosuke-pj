@@ -31,8 +31,7 @@ import './lib/blue-i18n';
 import './lib/blue-validator';
 import './lib/blue-conversion';
 import './lib/blue-theme';
-
-import './biz/demo';
+import './lib/blue-ui';
 
 import '../modules';
 import '../demo';
@@ -41,11 +40,23 @@ riot.mount('menu', 'scroll-sidebar');
 riot.mount('navbar-top', 'navbar-top');
 riot.mount('guidance', 'guidance');
 
+route('/navbar/*', (name) => {
+  console.log("aa")
+  riot.mount('main', 'workspace', { action: name });
+});
+
+route('/sidemenu/*/*', (menu, submenu) => {
+  console.log("bb")
+  riot.mount('main', 'workspace', { action: menu + '.' + submenu });
+});
+
 route('/*', (name) => {
-  riot.mount('main', 'workspace', { header: '', body: name, footer: '' });
+  console.log("cc")
+  riot.mount('main', 'workspace', { action: name });
 });
 
 route('/', () => {
-  riot.mount('main', 'workspace', { header: '', body: 'blank', footer: '' });
+  console.log("dd")
+  riot.mount('main', 'workspace', { action: 'blank' });
 });
 route.start(true);

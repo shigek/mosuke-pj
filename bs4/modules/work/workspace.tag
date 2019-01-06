@@ -18,11 +18,13 @@
     tag.on('mount', _onMount)
     tag.mixin('validator')
     tag.mixin('notify')
-
+    tag.mixin('ui')
+    
+    const ui = this.ui.loads(opts.action)
     tag.errors = {}
-    tag.header = opts.header || ''
-    tag.body = opts.body || 'blank'
-    tag.footer = opts.footer || ''
+    tag.header = tag.ui.getHeader() || ''
+    tag.body = tag.ui.getBody() || 'blank'
+    tag.footer = tag.ui.getFooter() || ''
 
     function _onMount() {
       $('#workspace').fadeIn(500);
