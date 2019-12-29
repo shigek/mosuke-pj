@@ -1,0 +1,7 @@
+node_modules
+.git
+.vscode
+dist
+*lock.json
+fontawesome5.2.0
+build

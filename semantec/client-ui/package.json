@@ -1,0 +1,21 @@
+{
+  "name": "client-ui",
+  "version": "1.0.0",
+  "description": "riot 4x + semantec-ui",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "riot": "^4.8.0",
+    "semantic-ui-riot": "^2.1.0"
+  },
+  "devDependencies": {
+    "riotjs-loader": "^4.0.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  }
+}

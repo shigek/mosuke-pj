@@ -6,6 +6,7 @@ const action = [
   { name: 'demo', module: demo },
   { name: 'settings', module: settings },
   { name: 'blank', module: demo },
-  { name: 'dashbord.1', module: dashbord }
+  { name: 'dashbord.1', module: dashbord },
+  { name: 'dashbord.2', module: dashbord },
 ]
 export = action;

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "client-ui"
+		},
+		{
+			"path": "front-web"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}

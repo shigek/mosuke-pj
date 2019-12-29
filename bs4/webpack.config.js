@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const _express = require('express');
+const _multer = require('multer');
+const _upload = _multer({ dest: 'upload/' });
 
 module.exports = env => {
   const mode = env || 'development';
@@ -26,6 +28,9 @@ module.exports = env => {
       contentBase: 'dist',
       before: (app, server) => {
         app.use(_express.static(path.join(__dirname, 'fontawesome5.2.0')));
+        app.post('/api/download', _upload.single('file'), (req, res) => {
+          res.json({ error: 'normal' });
+        });
       }
     },
     module: {

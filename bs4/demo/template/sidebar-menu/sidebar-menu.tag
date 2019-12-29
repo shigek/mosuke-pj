@@ -68,7 +68,7 @@
             i: 'fa fa-tachometer-alt', label: 'Dashboard', badge: 'New', badge_color: 'danger',
             submenu: [
               { label: 'Dashboard 1', href: '/#sidemenu/dashbord/1', badge: 'Pro', badge_color: 'success' },
-              { label: 'Dashboard 2', href: '#' },
+              { label: 'Dashboard 2', href: '/#sidemenu/dashbord/2' },
               { label: 'Dashboard 3', href: '#' }
             ]
           },

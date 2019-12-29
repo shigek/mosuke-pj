@@ -1,3 +1,5 @@
+import './work/body/blank/blank.tag';
+
 import './work/body/demo/demo.tag';
 import './work/body/demo/sex-option.tag';
 
