@@ -1,0 +1,101 @@
+<tiger-marcia>
+  <!-- side bar -->
+  <div class="ui bottom attached segment">
+    <div class="ui sidebar vertical left menu borderless sidemenu inverted pink">
+      <template each="{item in menus(props.menuConfig.id)}">       
+        <div if={item.type=='dropdown' }>
+          <div class="ui accordion inverted">
+            <template each="menu in item.menu">
+              <a class="title item"><i class="home titleIcon icon"></i>{menu.label}<i class="dropdown icon"></i></a>
+              <div class="content">
+                <template each="sub in menu.item">
+                  <a class="item" href="{sub.href}">{sub.label}</a>
+                </template>
+              </div>
+            </template>
+          </div>
+          <div if={item.type=='link' }></div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- navbar bar -->
+  <div class="ui fixed inverted main menu">
+    <div class="ui container">
+      <a class="launch icon item" onclick={hamburger}><i class="content icon"></i></a>
+      <div class="right menu"></div>
+    </div>
+  </div>
+
+  <!-- -->
+  <div class="pusher">
+    <div class="full height">
+
+    </div>
+  </div>
+
+  <script type="ts">
+    import { DropDownMenu, SidebarComponent } from '../../../../src/sidebar/sidebar'
+
+    function Marcia(): SidebarComponent {
+      return {
+        state: {
+        },
+        onMounted() {
+          $('.ui.accordion').accordion({ exclusive: true });
+          $('.ui.sidebar').sidebar('setting', { transition: 'overlay' })
+        },
+        menus(id: string): DropDownMenu {
+          return [
+            {
+              type: 'dropdown',
+              title: 'shipperMenu',
+              menu: [
+                {
+                  label: 'iv-menu',
+                  item: [
+                    {
+                      label: 'register',
+                      href: '#'
+                    },
+                    {
+                      label: 'reference',
+                      href: '#'
+                    },
+                    {
+                      label: 'update',
+                      href: '#'
+                    }
+                  ]
+                },
+                {
+                  label: 'si-menu',
+                  item: [
+                    {
+                      label: 'register',
+                      href: '#'
+                    },
+                    {
+                      label: 'reference',
+                      href: '#'
+                    },
+                    {
+                      label: 'update',
+                      href: '#'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        hamburger(event: MuseEvent): void {
+          $('.ui.sidebar').sidebar('toggle')
+        }
+      }
+    }
+
+    export default Marcia
+  </script>
+</tiger-marcia>
