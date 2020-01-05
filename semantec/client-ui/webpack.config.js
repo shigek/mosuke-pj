@@ -155,9 +155,7 @@ module.exports = env => {
     plugins: [
       new webpack.ProvidePlugin({
         $: 'jquery',
-        jQuery: 'jquery'
-      }),
-      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
         riot: 'riot'
       }),
       new htmlWebpackPlugin({

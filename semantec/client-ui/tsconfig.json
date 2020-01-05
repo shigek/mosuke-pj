@@ -15,6 +15,7 @@
     "noImplicitReturns": true,
     "moduleResolution": "node",
     "baseUrl": "./",
-    "esModuleInterop": true
-  },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
 }

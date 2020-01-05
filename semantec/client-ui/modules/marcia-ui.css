@@ -2,10 +2,23 @@
 .ui.accordion .title.item {
   display: block;
   padding: 1.0em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
 }
 
 .marcia .ui.container {
   width: auto !important;
   margin-left: 0em !important;
   margin-right: 1em !important;
+}
+
+.ui.accordion .title.item {
+  display: block;
+  padding: 1.0em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+.ui.logo.icon.image {
+  padding-right: 1em;
 }
