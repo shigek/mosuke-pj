@@ -18,6 +18,8 @@
     "@typescript-eslint/indent": [
       "error",
       2
-    ]
+    ],
+    "space-before-function-paren": "off",
+    "sort-imports": "off"
   }
 }

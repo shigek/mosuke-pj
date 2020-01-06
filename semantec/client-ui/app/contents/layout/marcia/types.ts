@@ -6,13 +6,15 @@ export type Menu = {
 }
 
 export interface MarciaComponentProps {
-
+  menuConfig: Menu;
 }
-export interface MarciaComponentState {
 
+export interface MarciaComponentState {
+  menuConfig: Menu;
 }
 
 export interface MarciaComponent extends RiotComponentExport<MarciaComponentProps, MarciaComponentState> {
-  findmenu(id: string): Menu;
-  hamburger(event: MouseEvent): void;
+  findMenu(id: string): Menu;
+  showLogin(event: MouseEvent): void;
+  showSidebar(event: MouseEvent): void;
 }

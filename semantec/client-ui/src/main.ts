@@ -3,10 +3,17 @@ import 'semantic-ui-riot'
 import { Route, Router } from '@riotjs/route'
 import { component, register } from 'riot'
 
+// plagins
+import './plugins/riot-class-names-plugin'
+import './plugins/riot-style-attributes-plugin'
+import './plugins/riot-uid-plugin'
+import './plugins/riot-observable-plugin'
+
+
+// application
 import Marcia from '../app/contents/layout/marcia/app.riot'
 //Component
 
-/* eslint-disable sort-imports */
 import 'semantic-ui/dist/semantic.min.css'
 import '../modules/marcia-ui.css'
 import '../modules/images/anchor16.png'

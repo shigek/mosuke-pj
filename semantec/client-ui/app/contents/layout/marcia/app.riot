@@ -3,10 +3,10 @@
     <div class="ui vertical inverted sidebar menu left borderless">
       <div class="item">
         <a class="ui logo icon image" href="#"><img src="/images/anchor32.png"></a>
-        <a href="#"><b>Marchia UI</b></a>
+        <a href="#"><b>Marcia + Semantic-UI</b></a>
       </div>
       <div class="ui divider"></div>
-      <template each="{item in findmenu(props.menuConfig.role).sidebar}">
+      <template each="{item in findMenu().sidebar}">
         <div if={item.type=='dropdown' } class="item">
           <div class="header">{item.title}</div>
           <div class="ui accordion inverted">
@@ -37,7 +37,7 @@
       </div>
       <login></login>
       <div class="item">
-        <div class="ui primary button authenticate" onclick={showLogin}>{loggedIn}</div>
+        <div class="{buttonFace()}" onclick={showLogin}>{loggedIn}</div>
       </div>
     </div>
   </div>
@@ -54,7 +54,8 @@
     function Marcia(): MarciaComponent {
       return {
         onBeforeMount(props: MarciaComponentProps, state: MarciaComponentState) {
-          this.loggedIn = (props.menuConfig) ? 'ログアウト' : 'ログイン'
+          this.state.menuConfig = this.props.menuConfig
+          this.loggedIn = (state.menuConfig) ? 'ログアウト' : 'ログイン'
         },
         onMounted(props: MarciaComponentState, state: MarciaComponentState): boolean {
           $('.ui.accordion').accordion({ exclusive: true })
@@ -71,19 +72,18 @@
               }, 300)
             }
           )
-          this.observable = observable(this)
           $('.authenticate').addClass((props.menuConfig) ? 'logout' : 'login');
         },
-        findmenu(id: string): Menu {
+        findMenu(): Menu {
           return {
             navbar: [],
             sidebar: [
               {
-                title: '荷主メニュー',
+                title: 'メニュー',
                 type: 'dropdown',
                 menu: [
                   {
-                    label: 'インボイス',
+                    label: 'ボイス',
                     item: [
                       {
                         label: '登録',
@@ -100,7 +100,7 @@
                     ]
                   },
                   {
-                    label: '船積書類',
+                    label: '書類',
                     item: [
                       {
                         label: '登録',
@@ -117,7 +117,7 @@
                     ]
                   },
                   {
-                    label: 'パッキングリスト',
+                    label: 'リスト',
                     item: [
                       {
                         label: '登録',
@@ -145,9 +145,26 @@
           $('.ui.sidebar').sidebar('toggle')
         },
         showLogin(event: MouseEvent): void {
-          // ログイン済みの場合は、ログアウトにになる'
-          const eventId = `this.$('#main-contents').id-show`
-          this.observable.trigger(eventId);
+          if (this.$('.logout')) {
+            delete this.state.menuConfig
+            this.loggedIn = 'ログイン'
+            this.update()
+          } else {
+            // ログイン済みの場合は、ログアウトになる'
+            const eventId = `${this.uid.id}-show`
+            this.obs.trigger(eventId);
+            this.loggedIn = 'ログアウト'
+          }
+        },
+        buttonFace(): [] {
+          return this.classNames({
+            ui: true,
+            primary: !(this.state.menuConfig),
+            orange: (this.state.menuConfig)          
+            login: !(this.state.menuConfig),
+            logout: (this.state.menuConfig)          
+            button: true
+          })
         }
       }
     }
