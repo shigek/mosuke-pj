@@ -1,0 +1,13 @@
+<i18n-let>
+   <span>{ state.message }</span>
+   <script>
+    export default {
+      onBeforeMount(props, state) {
+        this.state.message = this.i18n.getMessage(props.context)
+      },
+      onBeforeUpdate(props, state) {
+        this.state.message = this.i18n.getMessage(props.context)
+      }
+    }
+  </script>
+</i18n-let>

@@ -1,174 +1,56 @@
 <smr-marcia>
-  <div class="ui bottom attached segment">
-    <div class="ui vertical inverted sidebar menu left borderless">
-      <div class="item">
-        <a class="ui logo icon image" href="#"><img src="/images/anchor32.png"></a>
-        <a href="#"><b>Marcia + Semantic-UI</b></a>
-      </div>
-      <div class="ui divider"></div>
-      <template each="{item in findMenu().sidebar}">
-        <div if={item.type=='dropdown' } class="item">
-          <div class="header">{item.title}</div>
-          <div class="ui accordion inverted">
-            <template each="menu in item.menu">
-              <a class="title item"><i class="home titleIcon icon"></i>{menu.label}<i class="dropdown icon"></i></a>
-              <div class="content menu">
-                <template each="sub in menu.item">
-                  <a class="item" href="{sub.href}">{sub.label}</a>
-                </template>
-              </div>
-            </template>
-          </div>
-        </div>
-        <div if={item.type=='link' } class="item"></div>
-        <div if={item.type=='divider' } class="ui divider"></div>
-      </template>
+  <div class="ui vertical inverted sidebar menu left borderless">
+    <div class="item">
+      <a class="ui logo icon image" href="#"><img src="/images/anchor32.png"></a>
+      <a href="#"><b>Marcia + Semantic-UI</b></a>
     </div>
+    <div class="ui divider"></div>
+    <template each="{item in findMenu().sidebar}">
+      <div if={item.type=='dropdown' } class="item">
+        <div class="header">{item.title}</div>
+        <div class="ui accordion inverted">
+          <template each="menu in item.menu">
+            <a class="title item"><i class="home titleIcon icon"></i>{menu.label}<i class="dropdown icon"></i></a>
+            <div class="content menu">
+              <template each="sub in menu.item">
+                <a class="item" href="{sub.href}">{sub.label}</a>
+              </template>
+            </div>
+          </template>
+        </div>
+      </div>
+      <div if={item.type=='link' } class="item"></div>
+      <div if={item.type=='divider' } class="ui divider"></div>
+    </template>
   </div>
   <div class="ui small fixed inverted main menu borderless">
-    <a class="launch icon item" onclick={showSidebar}><i class="content icon"></i></a>
+    <a id="hamburger" class="launch icon item"><i class="content icon"></i></a>
     <div class="right menu">
-      <div class="ui dropdown item"><i class="world icon"></i>言語<i class="dropdown icon"></i>
+      <div class="ui language floating dropdown link item" id="languages">
+        <input type="hidden" name="language-name" value={state.countryCode}>
+        <i class="world icon"></i>
+        <div class="text"></div>
         <div class="menu">
-          <a class="item">英語</a>
-          <a class="item">Russian</a>
-          <a class="item">Spanish</a>
+          <div class="scrolling menu">
+            <div class="item" data-percent="100" data-value="en" data-english="English"><span
+                class="description">English</span> English </div>
+            <div class="item" data-percent="6" data-value="ja" data-english="Japanese"><span
+                class="description">日本語</span> Japanese </div>
+          </div>
         </div>
       </div>
-      <login></login>
       <div class="item">
-        <div class="{buttonFace()}" onclick={showLogin}>{loggedIn}</div>
+        <div id="logged-in" class="{buttonFace()}">
+          <i18n-let context={state.loggedIn} />
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- main contents -->
+  <!-- work area -->
   <div class="pusher">
     <div class="full height">
       <main-contents></main-contents>
     </div>
   </div>
-  <script type="ts">
-    import { MarciaComponent, Menu } from './types'
-
-    function Marcia(): MarciaComponent {
-      return {
-        onBeforeMount(props: MarciaComponentProps, state: MarciaComponentState) {
-          this.state.menuConfig = this.props.menuConfig
-          this.loggedIn = (state.menuConfig) ? 'ログアウト' : 'ログイン'
-        },
-        onMounted(props: MarciaComponentState, state: MarciaComponentState): boolean {
-          $('.ui.accordion').accordion({ exclusive: true })
-          $('.ui.sidebar').sidebar('setting', { transition: 'overlay' })
-          $('.ui.dropdown').hover(
-            function() {
-              setTimeout(function() {
-                $('.ui.dropdown').dropdown('show')
-              }, 300)
-            },
-            function() {
-              setTimeout(function() {
-                $('.ui.dropdown').dropdown('hide')
-              }, 300)
-            }
-          )
-          $('.authenticate').addClass((props.menuConfig) ? 'logout' : 'login');
-        },
-        findMenu(): Menu {
-          return {
-            navbar: [],
-            sidebar: [
-              {
-                title: 'メニュー',
-                type: 'dropdown',
-                menu: [
-                  {
-                    label: 'ボイス',
-                    item: [
-                      {
-                        label: '登録',
-                        href: '#'
-                      },
-                      {
-                        label: '照会',
-                        href: '#'
-                      },
-                      {
-                        label: '更新',
-                        href: '#'
-                      }
-                    ]
-                  },
-                  {
-                    label: '書類',
-                    item: [
-                      {
-                        label: '登録',
-                        href: '#'
-                      },
-                      {
-                        label: '照会',
-                        href: '#'
-                      },
-                      {
-                        label: '更新',
-                        href: '#'
-                      }
-                    ]
-                  },
-                  {
-                    label: 'リスト',
-                    item: [
-                      {
-                        label: '登録',
-                        href: '#'
-                      },
-                      {
-                        label: '照会',
-                        href: '#'
-                      },
-                      {
-                        label: '更新',
-                        href: '#'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                type: 'divider'
-              }
-            ]
-          }
-        },
-        showSidebar(event: MouseEvent): void {
-          $('.ui.sidebar').sidebar('toggle')
-        },
-        showLogin(event: MouseEvent): void {
-          if (this.$('.logout')) {
-            delete this.state.menuConfig
-            this.loggedIn = 'ログイン'
-            this.update()
-          } else {
-            // ログイン済みの場合は、ログアウトになる'
-            const eventId = `${this.uid.id}-show`
-            this.obs.trigger(eventId);
-            this.loggedIn = 'ログアウト'
-          }
-        },
-        buttonFace(): [] {
-          return this.classNames({
-            ui: true,
-            primary: !(this.state.menuConfig),
-            orange: (this.state.menuConfig)          
-            login: !(this.state.menuConfig),
-            logout: (this.state.menuConfig)          
-            button: true
-          })
-        }
-      }
-    }
-    export default Marcia
-  </script>
-
 </smr-marcia>

@@ -1,18 +1,22 @@
 import 'semantic-ui/dist/semantic.min.js'
 import 'semantic-ui-riot'
 import { Route, Router } from '@riotjs/route'
-import { component, register } from 'riot'
+import { mount, register } from 'riot'
+
+import { UserInfo } from './share-classes'
 
 // plagins
 import './plugins/riot-class-names-plugin'
 import './plugins/riot-style-attributes-plugin'
 import './plugins/riot-uid-plugin'
 import './plugins/riot-observable-plugin'
-
+import './plugins/riot-i18n-plugin'
 
 // application
-import Marcia from '../app/contents/layout/marcia/app.riot'
+import '../app/contents/layout/marcia/app'
+
 //Component
+import I18nRiotLet from '../modules/i18n-let/i18n-let.riot'
 
 import 'semantic-ui/dist/semantic.min.css'
 import '../modules/marcia-ui.css'
@@ -23,22 +27,13 @@ import '../modules/images/anchor48.png'
 //global component register
 register('g-router', Router)
 register('g-route', Route)
+register('i18n-let', I18nRiotLet)
 
-// 直接マウント (arg1:element, arg2:initialProp)
-// ログイン済みか済みでないかを検証する
-// ログイン済みの場合はinitiaPropにログイン情報を渡す
-export type MenuConfig = {
-  id: string;
-  role: string;
-  lastLogin: number;
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  details?: { [key: string]: any };
-  /* eslint-enable */
-}
-const menuConfig: MenuConfig = {
+const userInfo: UserInfo = {
   id: 'U0000000100',
   role: 'shipper',
+  countryCode: 'en',
   lastLogin: Date.now(),
   details: {}
 }
-component(Marcia)(document.getElementById('app') || document.body, { menuConfig })
+mount('#marcia-app', { userInfo }, 'smr-marcia')

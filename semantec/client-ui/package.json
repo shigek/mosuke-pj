@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@riotjs/route": "^5.2.0",
+    "i18nlet": "^0.2.1",
     "jquery": "^3.4.1",
     "riot-observable": "^3.0.0",
     "semantic-ui": "^2.4.2",
@@ -25,6 +26,7 @@
     "@riotjs/hot-reload": "^4.0.0",
     "@riotjs/webpack-loader": "^4.0.1",
     "@types/jquery": "^3.3.31",
+    "@types/lodash": "^4.14.149",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
     "babel-loader": "^8.0.6",
